@@ -403,6 +403,7 @@ new Timer(1000, taskPerformer).start();
         } catch (Exception e){
             javax.swing.JOptionPane.showMessageDialog(rootPane, "Gagal Menampilkan Laporan!");
         }
+     //coba dari komputer riza
     }//GEN-LAST:event_AgusSalimActionPerformed
 
     private void dewantoroActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_dewantoroActionPerformed
