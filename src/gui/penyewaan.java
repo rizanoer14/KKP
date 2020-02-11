@@ -116,12 +116,11 @@ public String kd_gedung, nm_gedung, hrg;
         SimpleDateFormat ft = new SimpleDateFormat ("yyyy-MM-dd");
         String DateTime = ft.format(HariSekarang);
         
-        
-        
         try{   
             String pilih = " ";
             if(siang.isSelected()) pilih="Siang";
-            else pilih="Malam";
+            else if(siang.isSelected()) pilih="Malam";
+            else  JOptionPane.showMessageDialog(this,"Belum dipilih");
             
             if(pilih.length()==0){
                 JOptionPane.showMessageDialog(this,"Belum dipilih");
@@ -155,8 +154,7 @@ public String kd_gedung, nm_gedung, hrg;
        }catch(SQLException e){ 
             System.out.println(e);  
        }
-        kodesewa();
-        
+        kodesewa();   
     }
 
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
@@ -327,16 +325,14 @@ public String kd_gedung, nm_gedung, hrg;
                             .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                                 .addComponent(Lokasi)
                                 .addComponent(Harga1))
+                            .addGap(39, 39, 39)
                             .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                                 .addGroup(jPanel1Layout.createSequentialGroup()
-                                    .addGap(31, 31, 31)
                                     .addComponent(siang)
-                                    .addGap(18, 18, 18)
+                                    .addGap(10, 10, 10)
                                     .addComponent(malam))
-                                .addGroup(jPanel1Layout.createSequentialGroup()
-                                    .addGap(39, 39, 39)
-                                    .addComponent(harga, javax.swing.GroupLayout.PREFERRED_SIZE, 104, javax.swing.GroupLayout.PREFERRED_SIZE))))))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 39, Short.MAX_VALUE)
+                                .addComponent(harga, javax.swing.GroupLayout.PREFERRED_SIZE, 104, javax.swing.GroupLayout.PREFERRED_SIZE)))))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 42, Short.MAX_VALUE)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
                         .addComponent(simpan)
@@ -410,7 +406,7 @@ public String kd_gedung, nm_gedung, hrg;
                                 .addComponent(siang)
                                 .addComponent(malam))
                             .addComponent(Lokasi))
-                        .addGap(0, 31, Short.MAX_VALUE)))
+                        .addGap(0, 60, Short.MAX_VALUE)))
                 .addContainerGap())
         );
 

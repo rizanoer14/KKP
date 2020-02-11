@@ -137,14 +137,14 @@ private void cari(){
         tabeljadwal = new javax.swing.JTable();
         kdsewa = new javax.swing.JTextField();
         jLabel4 = new javax.swing.JLabel();
-        cari = new javax.swing.JButton();
+        caritgl = new javax.swing.JButton();
         refresh = new javax.swing.JButton();
         isicari = new javax.swing.JTextField();
         batalsewa = new javax.swing.JButton();
         penyewa = new javax.swing.JTextField();
         jdc1 = new com.toedter.calendar.JDateChooser();
         jdc2 = new com.toedter.calendar.JDateChooser();
-        cari1 = new javax.swing.JButton();
+        carinama = new javax.swing.JButton();
 
         setBackground(new java.awt.Color(255, 255, 255));
         setBorder(null);
@@ -212,14 +212,14 @@ private void cari(){
         jLabel4.setText("Nama");
         jPanel2.add(jLabel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(370, 90, 40, 30));
 
-        cari.setIcon(new javax.swing.ImageIcon(getClass().getResource("/icon/icari.png"))); // NOI18N
-        cari.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
-        cari.addActionListener(new java.awt.event.ActionListener() {
+        caritgl.setIcon(new javax.swing.ImageIcon(getClass().getResource("/icon/icari.png"))); // NOI18N
+        caritgl.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        caritgl.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                cariActionPerformed(evt);
+                caritglActionPerformed(evt);
             }
         });
-        jPanel2.add(cari, new org.netbeans.lib.awtextra.AbsoluteConstraints(280, 90, 50, 30));
+        jPanel2.add(caritgl, new org.netbeans.lib.awtextra.AbsoluteConstraints(280, 90, 50, 30));
 
         refresh.setBackground(new java.awt.Color(255, 255, 255));
         refresh.setFont(new java.awt.Font("Segoe UI", 0, 12)); // NOI18N
@@ -266,17 +266,17 @@ private void cari(){
         penyewa.setFont(new java.awt.Font("Segoe UI", 0, 12)); // NOI18N
         penyewa.setText("penyewa");
         jPanel2.add(penyewa, new org.netbeans.lib.awtextra.AbsoluteConstraints(90, 350, 60, 30));
-        jPanel2.add(jdc1, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 90, 120, 30));
+        jPanel2.add(jdc1, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 90, 130, 30));
         jPanel2.add(jdc2, new org.netbeans.lib.awtextra.AbsoluteConstraints(140, 90, 130, 30));
 
-        cari1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/icon/icari.png"))); // NOI18N
-        cari1.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
-        cari1.addActionListener(new java.awt.event.ActionListener() {
+        carinama.setIcon(new javax.swing.ImageIcon(getClass().getResource("/icon/icari.png"))); // NOI18N
+        carinama.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        carinama.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                cari1ActionPerformed(evt);
+                carinamaActionPerformed(evt);
             }
         });
-        jPanel2.add(cari1, new org.netbeans.lib.awtextra.AbsoluteConstraints(530, 90, 50, 30));
+        jPanel2.add(carinama, new org.netbeans.lib.awtextra.AbsoluteConstraints(530, 90, 50, 30));
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -292,7 +292,7 @@ private void cari(){
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
-    private void cariActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cariActionPerformed
+    private void caritglActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_caritglActionPerformed
         SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd");
 
         String from = (String) sdf.format(jdc1.getDate());
@@ -301,7 +301,8 @@ private void cari(){
         Object[] Baris = {"Kode Sewa","Tanggal","Nama Gedung","Waktu","Penyewa"};
            tabmode = new DefaultTableModel(null, Baris);
            tabeljadwal.setModel(tabmode);
-           String sql = "select * from pemesanan where tanggal BETWEEN '"+from+"' AND '"+to+"'";
+           String sql = "select * from pemesanan where tanggal BETWEEN '"+from+"' AND '"+to+"' "
+                   + "ORDER BY tanggal ASC";
            try {
                
                Statement stat = conn.createStatement();
@@ -319,7 +320,7 @@ private void cari(){
            }catch (Exception e) {
                JOptionPane.showMessageDialog(null, "Data Tidak Ditemukan!");
            }
-    }//GEN-LAST:event_cariActionPerformed
+    }//GEN-LAST:event_caritglActionPerformed
 
     private void refreshbhapusActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_refreshbhapusActionPerformed
        datatable();
@@ -348,9 +349,9 @@ private void cari(){
         // TODO add your handling code here:
     }//GEN-LAST:event_isicariActionPerformed
 
-    private void cari1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cari1ActionPerformed
+    private void carinamaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_carinamaActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_cari1ActionPerformed
+    }//GEN-LAST:event_carinamaActionPerformed
 
     private void isicariKeyReleased(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_isicariKeyReleased
         cari();
@@ -358,8 +359,8 @@ private void cari(){
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton batalsewa;
-    private javax.swing.JButton cari;
-    private javax.swing.JButton cari1;
+    private javax.swing.JButton carinama;
+    private javax.swing.JButton caritgl;
     private javax.swing.JTextField isicari;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel4;
