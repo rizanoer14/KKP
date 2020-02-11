@@ -7,7 +7,7 @@ import java.sql.Statement;
 import javax.swing.JOptionPane;
 import koneksi.konek;
 
-public class detail_puspita extends javax.swing.JFrame {
+public class detail_alamanda extends javax.swing.JFrame {
   private Connection conn = new konek().connect();
   public String a[] = new String[50],b[] = new String[50],c[] = new String[50];
   protected void tampil(){
@@ -31,7 +31,7 @@ public class detail_puspita extends javax.swing.JFrame {
 
   
   
-    public detail_puspita() {
+    public detail_alamanda() {
          initComponents();
          this.setLocationRelativeTo(null);
          tampil();
@@ -66,7 +66,7 @@ public class detail_puspita extends javax.swing.JFrame {
 
         jLabel3.setFont(new java.awt.Font("Tahoma", 1, 30)); // NOI18N
         jLabel3.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
-        jLabel3.setText("R. PUSPITASARI");
+        jLabel3.setText("R. ALAMANDA");
 
         jTextArea2.setColumns(20);
         jTextArea2.setFont(new java.awt.Font("Calibri", 0, 13)); // NOI18N
@@ -100,7 +100,7 @@ public class detail_puspita extends javax.swing.JFrame {
 
         jLabel5.setFont(new java.awt.Font("Segoe UI", 0, 12)); // NOI18N
         jLabel5.setIcon(new javax.swing.ImageIcon(getClass().getResource("/image/agus.jpg"))); // NOI18N
-        jLabel5.setText("R. Puspitasari");
+        jLabel5.setText("R. Alamanda");
         jLabel5.setVerticalAlignment(javax.swing.SwingConstants.BOTTOM);
         jLabel5.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         jLabel5.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
@@ -176,9 +176,9 @@ public class detail_puspita extends javax.swing.JFrame {
 
     private void sewaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_sewaActionPerformed
        penyewaan n = new penyewaan(this, true);
-        n.setkd_gedung(a[21]);
-        n.setnm_gedung(b[21]);
-        n.sethrg(c[21]);
+        n.setkd_gedung(a[19]);
+        n.setnm_gedung(b[19]);
+        n.sethrg(c[19]);
         System.out.println("Data dari detail :\n"+n.getkd_gedung());
         n.setVisible(true);
         dispose();
@@ -212,13 +212,13 @@ public class detail_puspita extends javax.swing.JFrame {
                 }
             }
         } catch (ClassNotFoundException ex) {
-            java.util.logging.Logger.getLogger(detail_puspita.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(detail_alamanda.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (InstantiationException ex) {
-            java.util.logging.Logger.getLogger(detail_puspita.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(detail_alamanda.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (IllegalAccessException ex) {
-            java.util.logging.Logger.getLogger(detail_puspita.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(detail_alamanda.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (javax.swing.UnsupportedLookAndFeelException ex) {
-            java.util.logging.Logger.getLogger(detail_puspita.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(detail_alamanda.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         }
         //</editor-fold>
         //</editor-fold>
@@ -480,7 +480,7 @@ public class detail_puspita extends javax.swing.JFrame {
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
-                new detail_puspita().setVisible(true);
+                new detail_alamanda().setVisible(true);
             }
         });
     }

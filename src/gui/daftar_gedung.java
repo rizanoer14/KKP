@@ -17,10 +17,10 @@ public class daftar_gedung extends javax.swing.JInternalFrame {
         sudirman2 = new javax.swing.JLabel();
         agus2 = new javax.swing.JLabel();
         dewantoro2 = new javax.swing.JLabel();
-        sudirman3 = new javax.swing.JLabel();
-        agus3 = new javax.swing.JLabel();
-        kartini3 = new javax.swing.JLabel();
-        dewantoro3 = new javax.swing.JLabel();
+        puspita = new javax.swing.JLabel();
+        pandan = new javax.swing.JLabel();
+        sarbini = new javax.swing.JLabel();
+        mawar = new javax.swing.JLabel();
         parang = new javax.swing.JLabel();
 
         setBackground(new java.awt.Color(255, 255, 255));
@@ -41,7 +41,7 @@ public class daftar_gedung extends javax.swing.JInternalFrame {
 
         jLabel3.setFont(new java.awt.Font("Segoe UI", 0, 24)); // NOI18N
         jLabel3.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        jLabel3.setText("Daftar Gedung Wiladatika");
+        jLabel3.setText("Daftar Gedung Pertemuan");
 
         kartini2.setFont(new java.awt.Font("Segoe UI", 1, 13)); // NOI18N
         kartini2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/image/kar2.jpg"))); // NOI18N
@@ -84,7 +84,7 @@ public class daftar_gedung extends javax.swing.JInternalFrame {
 
         dewantoro2.setFont(new java.awt.Font("Segoe UI", 1, 13)); // NOI18N
         dewantoro2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/image/dewan.jpg"))); // NOI18N
-        dewantoro2.setText("Dewantoro");
+        dewantoro2.setText("Ki Hajar Dewantoro");
         dewantoro2.setVerticalAlignment(javax.swing.SwingConstants.BOTTOM);
         dewantoro2.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         dewantoro2.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
@@ -95,55 +95,55 @@ public class daftar_gedung extends javax.swing.JInternalFrame {
             }
         });
 
-        sudirman3.setFont(new java.awt.Font("Segoe UI", 1, 13)); // NOI18N
-        sudirman3.setIcon(new javax.swing.ImageIcon(getClass().getResource("/image/sudirman.jpg"))); // NOI18N
-        sudirman3.setText("Sudirman");
-        sudirman3.setVerticalAlignment(javax.swing.SwingConstants.BOTTOM);
-        sudirman3.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
-        sudirman3.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
-        sudirman3.setVerticalTextPosition(javax.swing.SwingConstants.BOTTOM);
-        sudirman3.addMouseListener(new java.awt.event.MouseAdapter() {
+        puspita.setFont(new java.awt.Font("Segoe UI", 1, 13)); // NOI18N
+        puspita.setIcon(new javax.swing.ImageIcon(getClass().getResource("/image/sudirman.jpg"))); // NOI18N
+        puspita.setText("Puspitasari");
+        puspita.setVerticalAlignment(javax.swing.SwingConstants.BOTTOM);
+        puspita.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        puspita.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
+        puspita.setVerticalTextPosition(javax.swing.SwingConstants.BOTTOM);
+        puspita.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
-                sudirman3sudirmanMouseClicked(evt);
+                puspitasudirmanMouseClicked(evt);
             }
         });
 
-        agus3.setFont(new java.awt.Font("Segoe UI", 1, 13)); // NOI18N
-        agus3.setIcon(new javax.swing.ImageIcon(getClass().getResource("/image/agus.jpg"))); // NOI18N
-        agus3.setText("Agus Salim");
-        agus3.setVerticalAlignment(javax.swing.SwingConstants.BOTTOM);
-        agus3.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
-        agus3.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
-        agus3.setVerticalTextPosition(javax.swing.SwingConstants.BOTTOM);
-        agus3.addMouseListener(new java.awt.event.MouseAdapter() {
+        pandan.setFont(new java.awt.Font("Segoe UI", 1, 13)); // NOI18N
+        pandan.setIcon(new javax.swing.ImageIcon(getClass().getResource("/image/agus.jpg"))); // NOI18N
+        pandan.setText("Pandansari");
+        pandan.setVerticalAlignment(javax.swing.SwingConstants.BOTTOM);
+        pandan.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        pandan.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
+        pandan.setVerticalTextPosition(javax.swing.SwingConstants.BOTTOM);
+        pandan.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
-                agus3agusMouseClicked(evt);
+                pandanagusMouseClicked(evt);
             }
         });
 
-        kartini3.setFont(new java.awt.Font("Segoe UI", 1, 13)); // NOI18N
-        kartini3.setIcon(new javax.swing.ImageIcon(getClass().getResource("/image/kar2.jpg"))); // NOI18N
-        kartini3.setText("Kartini");
-        kartini3.setVerticalAlignment(javax.swing.SwingConstants.BOTTOM);
-        kartini3.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
-        kartini3.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
-        kartini3.setVerticalTextPosition(javax.swing.SwingConstants.BOTTOM);
-        kartini3.addMouseListener(new java.awt.event.MouseAdapter() {
+        sarbini.setFont(new java.awt.Font("Segoe UI", 1, 13)); // NOI18N
+        sarbini.setIcon(new javax.swing.ImageIcon(getClass().getResource("/image/kar2.jpg"))); // NOI18N
+        sarbini.setText("Sarbini");
+        sarbini.setVerticalAlignment(javax.swing.SwingConstants.BOTTOM);
+        sarbini.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        sarbini.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
+        sarbini.setVerticalTextPosition(javax.swing.SwingConstants.BOTTOM);
+        sarbini.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
-                kartini3kartiniMouseClicked(evt);
+                sarbinikartiniMouseClicked(evt);
             }
         });
 
-        dewantoro3.setFont(new java.awt.Font("Segoe UI", 1, 13)); // NOI18N
-        dewantoro3.setIcon(new javax.swing.ImageIcon(getClass().getResource("/image/dewan.jpg"))); // NOI18N
-        dewantoro3.setText("Dewantoro");
-        dewantoro3.setVerticalAlignment(javax.swing.SwingConstants.BOTTOM);
-        dewantoro3.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
-        dewantoro3.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
-        dewantoro3.setVerticalTextPosition(javax.swing.SwingConstants.BOTTOM);
-        dewantoro3.addMouseListener(new java.awt.event.MouseAdapter() {
+        mawar.setFont(new java.awt.Font("Segoe UI", 1, 13)); // NOI18N
+        mawar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/image/dewan.jpg"))); // NOI18N
+        mawar.setText("Mawardi I");
+        mawar.setVerticalAlignment(javax.swing.SwingConstants.BOTTOM);
+        mawar.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        mawar.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
+        mawar.setVerticalTextPosition(javax.swing.SwingConstants.BOTTOM);
+        mawar.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
-                dewantoro3dewantoroMouseClicked(evt);
+                mawardewantoroMouseClicked(evt);
             }
         });
 
@@ -174,15 +174,15 @@ public class daftar_gedung extends javax.swing.JInternalFrame {
                         .addGroup(panel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                             .addComponent(sudirman2)
                             .addComponent(dewantoro2)
-                            .addComponent(sudirman3)
-                            .addComponent(dewantoro3)
+                            .addComponent(puspita)
+                            .addComponent(mawar)
                             .addComponent(parang))
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                         .addGroup(panel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addComponent(agus2)
                             .addComponent(kartini2)
-                            .addComponent(agus3)
-                            .addComponent(kartini3))
+                            .addComponent(pandan)
+                            .addComponent(sarbini))
                         .addGap(65, 65, 65)))
                 .addContainerGap())
         );
@@ -201,12 +201,12 @@ public class daftar_gedung extends javax.swing.JInternalFrame {
                     .addComponent(dewantoro2))
                 .addGap(35, 35, 35)
                 .addGroup(panel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                    .addComponent(agus3, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(sudirman3, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                    .addComponent(pandan, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(puspita, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                 .addGap(32, 32, 32)
                 .addGroup(panel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(kartini3)
-                    .addComponent(dewantoro3))
+                    .addComponent(sarbini)
+                    .addComponent(mawar))
                 .addGap(32, 32, 32)
                 .addComponent(parang)
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
@@ -218,17 +218,13 @@ public class daftar_gedung extends javax.swing.JInternalFrame {
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(layout.createSequentialGroup()
-                .addContainerGap()
-                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 575, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap())
+            .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 595, Short.MAX_VALUE)
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addContainerGap()
                 .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap())
+                .addGap(0, 0, Short.MAX_VALUE))
         );
 
         pack();
@@ -250,51 +246,39 @@ public class daftar_gedung extends javax.swing.JInternalFrame {
         new detail_kartini().show();
     }//GEN-LAST:event_kartiniMouseClicked
 
-    private void sudirman3sudirmanMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_sudirman3sudirmanMouseClicked
-        // TODO add your handling code here:
-    }//GEN-LAST:event_sudirman3sudirmanMouseClicked
+    private void puspitasudirmanMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_puspitasudirmanMouseClicked
+        new detail_kartini().show();
+    }//GEN-LAST:event_puspitasudirmanMouseClicked
 
-    private void agus3agusMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_agus3agusMouseClicked
-        // TODO add your handling code here:
-    }//GEN-LAST:event_agus3agusMouseClicked
+    private void pandanagusMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_pandanagusMouseClicked
+         new detail_pandan().show();
+    }//GEN-LAST:event_pandanagusMouseClicked
 
-    private void kartini3kartiniMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_kartini3kartiniMouseClicked
-        // TODO add your handling code here:
-    }//GEN-LAST:event_kartini3kartiniMouseClicked
+    private void sarbinikartiniMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_sarbinikartiniMouseClicked
+        new detail_sarbini().show();
+    }//GEN-LAST:event_sarbinikartiniMouseClicked
 
-    private void dewantoro3dewantoroMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_dewantoro3dewantoroMouseClicked
-        // TODO add your handling code here:
-    }//GEN-LAST:event_dewantoro3dewantoroMouseClicked
+    private void mawardewantoroMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_mawardewantoroMouseClicked
+        new detail_mawar().show();
+    }//GEN-LAST:event_mawardewantoroMouseClicked
 
     private void parangdewantoroMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_parangdewantoroMouseClicked
-        new detail_parang().show();
+        new detail_kusumo().show();
     }//GEN-LAST:event_parangdewantoroMouseClicked
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JLabel agus;
-    private javax.swing.JLabel agus1;
     private javax.swing.JLabel agus2;
-    private javax.swing.JLabel agus3;
-    private javax.swing.JLabel dewantoro;
-    private javax.swing.JLabel dewantoro1;
     private javax.swing.JLabel dewantoro2;
-    private javax.swing.JLabel dewantoro3;
-    private javax.swing.JLabel jLabel1;
-    private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JScrollPane jScrollPane1;
-    private javax.swing.JLabel kartini;
-    private javax.swing.JLabel kartini1;
     private javax.swing.JLabel kartini2;
-    private javax.swing.JLabel kartini3;
-    private javax.swing.JPanel panel;
-    private javax.swing.JPanel panel1;
+    private javax.swing.JLabel mawar;
+    private javax.swing.JLabel pandan;
     private javax.swing.JPanel panel2;
     private javax.swing.JLabel parang;
-    private javax.swing.JLabel sudirman;
-    private javax.swing.JLabel sudirman1;
+    private javax.swing.JLabel puspita;
+    private javax.swing.JLabel sarbini;
     private javax.swing.JLabel sudirman2;
-    private javax.swing.JLabel sudirman3;
     // End of variables declaration//GEN-END:variables
 }

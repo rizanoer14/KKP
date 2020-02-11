@@ -16,7 +16,7 @@ import koneksi.konek;
  *
  * @author Available
  */
-public class detail_pandan extends javax.swing.JFrame {
+public class detail_kusumo extends javax.swing.JFrame {
 
     private Connection conn = new konek().connect();
   public String a[] = new String[50],b[] = new String[50],c[] = new String[50];
@@ -39,9 +39,12 @@ public class detail_pandan extends javax.swing.JFrame {
          }catch (SQLException e) {
             JOptionPane.showMessageDialog(null, e);
         }
-        }
-    public detail_pandan() {
-           initComponents();
+  }
+    /**
+     * Creates new form detail_kusumo
+     */
+    public detail_kusumo() {
+        initComponents();
          this.setLocationRelativeTo(null);
          tampil();
     }
@@ -75,18 +78,18 @@ public class detail_pandan extends javax.swing.JFrame {
 
         jLabel3.setFont(new java.awt.Font("Tahoma", 1, 30)); // NOI18N
         jLabel3.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
-        jLabel3.setText("PANDANSARI");
+        jLabel3.setText("PARANG KUSUMO");
 
         jTextArea2.setColumns(20);
         jTextArea2.setFont(new java.awt.Font("Calibri", 0, 13)); // NOI18N
         jTextArea2.setRows(5);
-        jTextArea2.setText("Harga Paket    : Rp 13.750.000,- \nDeskripsi Paket: \n1. Kapasitas 500 kursi\n2. Wireless\n3. Sound System\n");
+        jTextArea2.setText("Harga Paket    : Rp 330.000,-\n");
         jTextArea2.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
         jScrollPane2.setViewportView(jTextArea2);
 
         jLabel5.setFont(new java.awt.Font("Segoe UI", 0, 12)); // NOI18N
         jLabel5.setIcon(new javax.swing.ImageIcon(getClass().getResource("/image/dewan.jpg"))); // NOI18N
-        jLabel5.setText("Pandansai");
+        jLabel5.setText("Parang Kusumo");
         jLabel5.setVerticalAlignment(javax.swing.SwingConstants.BOTTOM);
         jLabel5.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         jLabel5.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
@@ -195,9 +198,9 @@ public class detail_pandan extends javax.swing.JFrame {
 
     private void sewaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_sewaActionPerformed
         penyewaan n = new penyewaan(this, true);
-        n.setkd_gedung(a[5]);
-        n.setnm_gedung(b[5]);
-        n.sethrg(c[5]);
+        n.setkd_gedung(a[9]);
+        n.setnm_gedung(b[9]);
+        n.sethrg(c[9]);
         System.out.println("Data dari detail :\n"+n.getkd_gedung());
         n.setVisible(true);
         dispose();
@@ -220,20 +223,20 @@ public class detail_pandan extends javax.swing.JFrame {
                 }
             }
         } catch (ClassNotFoundException ex) {
-            java.util.logging.Logger.getLogger(detail_pandan.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(detail_kusumo.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (InstantiationException ex) {
-            java.util.logging.Logger.getLogger(detail_pandan.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(detail_kusumo.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (IllegalAccessException ex) {
-            java.util.logging.Logger.getLogger(detail_pandan.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(detail_kusumo.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (javax.swing.UnsupportedLookAndFeelException ex) {
-            java.util.logging.Logger.getLogger(detail_pandan.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(detail_kusumo.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         }
         //</editor-fold>
 
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
-                new detail_pandan().setVisible(true);
+                new detail_kusumo().setVisible(true);
             }
         });
     }

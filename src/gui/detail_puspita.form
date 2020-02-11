@@ -128,7 +128,7 @@
               <Font name="Tahoma" size="30" style="1"/>
             </Property>
             <Property name="horizontalAlignment" type="int" value="2"/>
-            <Property name="text" type="java.lang.String" value="R.H. Agus Salim"/>
+            <Property name="text" type="java.lang.String" value="R. PUSPITASARI"/>
           </Properties>
         </Component>
         <Container class="javax.swing.JScrollPane" name="jScrollPane2">
@@ -145,7 +145,7 @@
                   <Font name="Calibri" size="13" style="0"/>
                 </Property>
                 <Property name="rows" type="int" value="5"/>
-                <Property name="text" type="java.lang.String" value="Harga Paket    : Rp 3.300.000,- &#xa;Deskripsi Paket: &#xa;1. Kapasitas 100 kursi&#xa;2. Wireless&#xa;"/>
+                <Property name="text" type="java.lang.String" value="Harga Paket    : Rp 880.000,- &#xa;Deskripsi Paket: &#xa;"/>
                 <Property name="cursor" type="java.awt.Cursor" editor="org.netbeans.modules.form.editors2.CursorEditor">
                   <Color id="Default Cursor"/>
                 </Property>
@@ -204,7 +204,7 @@
             <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
               <Image iconType="3" name="/image/agus.jpg"/>
             </Property>
-            <Property name="text" type="java.lang.String" value="R.H. Agus Salim "/>
+            <Property name="text" type="java.lang.String" value="R. Puspitasari"/>
             <Property name="verticalAlignment" type="int" value="3"/>
             <Property name="cursor" type="java.awt.Cursor" editor="org.netbeans.modules.form.editors2.CursorEditor">
               <Color id="Hand Cursor"/>

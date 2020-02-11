@@ -39,19 +39,14 @@
   <Layout>
     <DimensionLayout dim="0">
       <Group type="103" groupAlignment="0" attributes="0">
-          <Group type="102" alignment="0" attributes="0">
-              <EmptySpace max="-2" attributes="0"/>
-              <Component id="jScrollPane1" min="-2" pref="575" max="-2" attributes="0"/>
-              <EmptySpace max="-2" attributes="0"/>
-          </Group>
+          <Component id="jScrollPane1" alignment="0" pref="595" max="32767" attributes="0"/>
       </Group>
     </DimensionLayout>
     <DimensionLayout dim="1">
       <Group type="103" groupAlignment="0" attributes="0">
           <Group type="102" alignment="0" attributes="0">
-              <EmptySpace max="-2" attributes="0"/>
               <Component id="jScrollPane1" max="-2" attributes="0"/>
-              <EmptySpace max="-2" attributes="0"/>
+              <EmptySpace min="0" pref="0" max="32767" attributes="0"/>
           </Group>
       </Group>
     </DimensionLayout>
@@ -88,16 +83,16 @@
                               <Group type="103" groupAlignment="1" attributes="0">
                                   <Component id="sudirman2" min="-2" max="-2" attributes="0"/>
                                   <Component id="dewantoro2" min="-2" max="-2" attributes="0"/>
-                                  <Component id="sudirman3" min="-2" max="-2" attributes="0"/>
-                                  <Component id="dewantoro3" min="-2" max="-2" attributes="0"/>
+                                  <Component id="puspita" min="-2" max="-2" attributes="0"/>
+                                  <Component id="mawar" min="-2" max="-2" attributes="0"/>
                                   <Component id="parang" min="-2" max="-2" attributes="0"/>
                               </Group>
                               <EmptySpace max="32767" attributes="0"/>
                               <Group type="103" groupAlignment="0" attributes="0">
                                   <Component id="agus2" min="-2" max="-2" attributes="0"/>
                                   <Component id="kartini2" min="-2" max="-2" attributes="0"/>
-                                  <Component id="agus3" min="-2" max="-2" attributes="0"/>
-                                  <Component id="kartini3" min="-2" max="-2" attributes="0"/>
+                                  <Component id="pandan" min="-2" max="-2" attributes="0"/>
+                                  <Component id="sarbini" min="-2" max="-2" attributes="0"/>
                               </Group>
                               <EmptySpace min="-2" pref="65" max="-2" attributes="0"/>
                           </Group>
@@ -123,13 +118,13 @@
                       </Group>
                       <EmptySpace min="-2" pref="35" max="-2" attributes="0"/>
                       <Group type="103" groupAlignment="0" max="-2" attributes="0">
-                          <Component id="agus3" alignment="0" max="32767" attributes="0"/>
-                          <Component id="sudirman3" alignment="0" max="32767" attributes="0"/>
+                          <Component id="pandan" alignment="0" max="32767" attributes="0"/>
+                          <Component id="puspita" alignment="0" max="32767" attributes="0"/>
                       </Group>
                       <EmptySpace min="-2" pref="32" max="-2" attributes="0"/>
                       <Group type="103" groupAlignment="0" attributes="0">
-                          <Component id="kartini3" alignment="0" min="-2" max="-2" attributes="0"/>
-                          <Component id="dewantoro3" min="-2" max="-2" attributes="0"/>
+                          <Component id="sarbini" alignment="0" min="-2" max="-2" attributes="0"/>
+                          <Component id="mawar" min="-2" max="-2" attributes="0"/>
                       </Group>
                       <EmptySpace min="-2" pref="32" max="-2" attributes="0"/>
                       <Component id="parang" min="-2" max="-2" attributes="0"/>
@@ -145,7 +140,7 @@
                   <Font name="Segoe UI" size="24" style="0"/>
                 </Property>
                 <Property name="horizontalAlignment" type="int" value="0"/>
-                <Property name="text" type="java.lang.String" value="Daftar Gedung Wiladatika"/>
+                <Property name="text" type="java.lang.String" value="Daftar Gedung Pertemuan"/>
               </Properties>
             </Component>
             <Component class="javax.swing.JLabel" name="kartini2">
@@ -216,7 +211,7 @@
                 <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
                   <Image iconType="3" name="/image/dewan.jpg"/>
                 </Property>
-                <Property name="text" type="java.lang.String" value="Dewantoro"/>
+                <Property name="text" type="java.lang.String" value="Ki Hajar Dewantoro"/>
                 <Property name="verticalAlignment" type="int" value="3"/>
                 <Property name="cursor" type="java.awt.Cursor" editor="org.netbeans.modules.form.editors2.CursorEditor">
                   <Color id="Hand Cursor"/>
@@ -228,7 +223,7 @@
                 <EventHandler event="mouseClicked" listener="java.awt.event.MouseListener" parameters="java.awt.event.MouseEvent" handler="dewantoroMouseClicked"/>
               </Events>
             </Component>
-            <Component class="javax.swing.JLabel" name="sudirman3">
+            <Component class="javax.swing.JLabel" name="puspita">
               <Properties>
                 <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
                   <Font name="Segoe UI" size="13" style="1"/>
@@ -236,7 +231,7 @@
                 <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
                   <Image iconType="3" name="/image/sudirman.jpg"/>
                 </Property>
-                <Property name="text" type="java.lang.String" value="Sudirman"/>
+                <Property name="text" type="java.lang.String" value="Puspitasari"/>
                 <Property name="verticalAlignment" type="int" value="3"/>
                 <Property name="cursor" type="java.awt.Cursor" editor="org.netbeans.modules.form.editors2.CursorEditor">
                   <Color id="Hand Cursor"/>
@@ -245,10 +240,10 @@
                 <Property name="verticalTextPosition" type="int" value="3"/>
               </Properties>
               <Events>
-                <EventHandler event="mouseClicked" listener="java.awt.event.MouseListener" parameters="java.awt.event.MouseEvent" handler="sudirman3sudirmanMouseClicked"/>
+                <EventHandler event="mouseClicked" listener="java.awt.event.MouseListener" parameters="java.awt.event.MouseEvent" handler="puspitasudirmanMouseClicked"/>
               </Events>
             </Component>
-            <Component class="javax.swing.JLabel" name="agus3">
+            <Component class="javax.swing.JLabel" name="pandan">
               <Properties>
                 <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
                   <Font name="Segoe UI" size="13" style="1"/>
@@ -256,7 +251,7 @@
                 <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
                   <Image iconType="3" name="/image/agus.jpg"/>
                 </Property>
-                <Property name="text" type="java.lang.String" value="Agus Salim"/>
+                <Property name="text" type="java.lang.String" value="Pandansari"/>
                 <Property name="verticalAlignment" type="int" value="3"/>
                 <Property name="cursor" type="java.awt.Cursor" editor="org.netbeans.modules.form.editors2.CursorEditor">
                   <Color id="Hand Cursor"/>
@@ -265,10 +260,10 @@
                 <Property name="verticalTextPosition" type="int" value="3"/>
               </Properties>
               <Events>
-                <EventHandler event="mouseClicked" listener="java.awt.event.MouseListener" parameters="java.awt.event.MouseEvent" handler="agus3agusMouseClicked"/>
+                <EventHandler event="mouseClicked" listener="java.awt.event.MouseListener" parameters="java.awt.event.MouseEvent" handler="pandanagusMouseClicked"/>
               </Events>
             </Component>
-            <Component class="javax.swing.JLabel" name="kartini3">
+            <Component class="javax.swing.JLabel" name="sarbini">
               <Properties>
                 <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
                   <Font name="Segoe UI" size="13" style="1"/>
@@ -276,7 +271,7 @@
                 <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
                   <Image iconType="3" name="/image/kar2.jpg"/>
                 </Property>
-                <Property name="text" type="java.lang.String" value="Kartini"/>
+                <Property name="text" type="java.lang.String" value="Sarbini"/>
                 <Property name="verticalAlignment" type="int" value="3"/>
                 <Property name="cursor" type="java.awt.Cursor" editor="org.netbeans.modules.form.editors2.CursorEditor">
                   <Color id="Hand Cursor"/>
@@ -285,10 +280,10 @@
                 <Property name="verticalTextPosition" type="int" value="3"/>
               </Properties>
               <Events>
-                <EventHandler event="mouseClicked" listener="java.awt.event.MouseListener" parameters="java.awt.event.MouseEvent" handler="kartini3kartiniMouseClicked"/>
+                <EventHandler event="mouseClicked" listener="java.awt.event.MouseListener" parameters="java.awt.event.MouseEvent" handler="sarbinikartiniMouseClicked"/>
               </Events>
             </Component>
-            <Component class="javax.swing.JLabel" name="dewantoro3">
+            <Component class="javax.swing.JLabel" name="mawar">
               <Properties>
                 <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
                   <Font name="Segoe UI" size="13" style="1"/>
@@ -296,7 +291,7 @@
                 <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
                   <Image iconType="3" name="/image/dewan.jpg"/>
                 </Property>
-                <Property name="text" type="java.lang.String" value="Dewantoro"/>
+                <Property name="text" type="java.lang.String" value="Mawardi I"/>
                 <Property name="verticalAlignment" type="int" value="3"/>
                 <Property name="cursor" type="java.awt.Cursor" editor="org.netbeans.modules.form.editors2.CursorEditor">
                   <Color id="Hand Cursor"/>
@@ -305,7 +300,7 @@
                 <Property name="verticalTextPosition" type="int" value="3"/>
               </Properties>
               <Events>
-                <EventHandler event="mouseClicked" listener="java.awt.event.MouseListener" parameters="java.awt.event.MouseEvent" handler="dewantoro3dewantoroMouseClicked"/>
+                <EventHandler event="mouseClicked" listener="java.awt.event.MouseListener" parameters="java.awt.event.MouseEvent" handler="mawardewantoroMouseClicked"/>
               </Events>
             </Component>
             <Component class="javax.swing.JLabel" name="parang">
