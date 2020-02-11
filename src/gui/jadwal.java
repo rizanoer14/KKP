@@ -30,6 +30,7 @@ private DefaultTableModel tabmode;
                 String c = hasil.getString("nama_ruang");
                 String d = hasil.getString("waktu");
                 String e = hasil.getString("nama_penyewa");
+                
                                 
                 String[] data={a,b,c,d,e};
                 tabmode.addRow(data);
@@ -39,11 +40,34 @@ private DefaultTableModel tabmode;
         }
     }
  
+ private void caribet(){
+       Object[] Baris = {"Kode Sewa","Tanggal","Nama Gedung","Waktu","Penyewa"};
+           tabmode = new DefaultTableModel(null, Baris);
+           tabeljadwal.setModel(tabmode);
+           String sql = "SELECT * FROM pemesanan WHERE tanggal or nama_penyewa like '%"+isicari.getText()+"%'";
+           try {
+               Statement stat = conn.createStatement();
+               ResultSet hasil = stat.executeQuery(sql);
+               while(hasil.next()){ 
+                String a = hasil.getString("kode_sewa");
+                String b = hasil.getString("tanggal");
+                String c = hasil.getString("nama_ruang");
+                String d = hasil.getString("waktu");
+                String e = hasil.getString("nama_penyewa");
+
+                   String[] data={a,b,c,d,e};
+                   tabmode.addRow(data);
+               }
+           }catch (Exception e) {
+               JOptionPane.showMessageDialog(null, "Data Tidak Ditemukan!");
+        }
+ }
 private void cari(){
        Object[] Baris = {"Kode Sewa","Tanggal","Nama Gedung","Waktu","Penyewa"};
            tabmode = new DefaultTableModel(null, Baris);
            tabeljadwal.setModel(tabmode);
-           String sql = "select * from pemesanan where nama_ruang or nama_penyewa like '%"+isicari.getText()+"%'";
+           String sql = "select * from pemesanan where tanggal like '%"+isicari.getText()+"%' "+
+                   "or nama_penyewa like '%"+isicari.getText()+"%'";
            try {
                Statement stat = conn.createStatement();
                ResultSet hasil = stat.executeQuery(sql);
@@ -78,6 +102,8 @@ private void cari(){
             }
         }
     }
+    
+    
 
     public jadwal() {
         initComponents();
@@ -86,7 +112,14 @@ private void cari(){
         penyewa.hide();
         batalsewa.setEnabled(false);
         
+        Date date = new Date();
+        jdc1.setDate(date);
+        jdc2.setDate(date);
+        System.out.println("Data dari dialog:\n");
+        
     }
+    
+    
 
     /**
      * This method is called from within the constructor to initialize the form.
@@ -211,6 +244,9 @@ private void cari(){
             public void keyPressed(java.awt.event.KeyEvent evt) {
                 isicariKeyPressed(evt);
             }
+            public void keyReleased(java.awt.event.KeyEvent evt) {
+                isicariKeyReleased(evt);
+            }
         });
         jPanel2.add(isicari, new org.netbeans.lib.awtextra.AbsoluteConstraints(410, 90, 120, 30));
 
@@ -230,8 +266,8 @@ private void cari(){
         penyewa.setFont(new java.awt.Font("Segoe UI", 0, 12)); // NOI18N
         penyewa.setText("penyewa");
         jPanel2.add(penyewa, new org.netbeans.lib.awtextra.AbsoluteConstraints(90, 350, 60, 30));
-        jPanel2.add(jdc1, new org.netbeans.lib.awtextra.AbsoluteConstraints(150, 90, 120, 30));
-        jPanel2.add(jdc2, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 90, 130, 30));
+        jPanel2.add(jdc1, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 90, 120, 30));
+        jPanel2.add(jdc2, new org.netbeans.lib.awtextra.AbsoluteConstraints(140, 90, 130, 30));
 
         cari1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/icon/icari.png"))); // NOI18N
         cari1.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
@@ -257,7 +293,32 @@ private void cari(){
     }// </editor-fold>//GEN-END:initComponents
 
     private void cariActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cariActionPerformed
-        cari();
+        SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd");
+
+        String from = (String) sdf.format(jdc1.getDate());
+        String to = (String) sdf.format(jdc2.getDate());
+        
+        Object[] Baris = {"Kode Sewa","Tanggal","Nama Gedung","Waktu","Penyewa"};
+           tabmode = new DefaultTableModel(null, Baris);
+           tabeljadwal.setModel(tabmode);
+           String sql = "select * from pemesanan where tanggal BETWEEN '"+from+"' AND '"+to+"'";
+           try {
+               
+               Statement stat = conn.createStatement();
+               ResultSet hasil = stat.executeQuery(sql);
+               while(hasil.next()){ 
+                String a = hasil.getString("kode_sewa");
+                String b = hasil.getString("tanggal");
+                String c = hasil.getString("nama_ruang");
+                String d = hasil.getString("waktu");
+                String e = hasil.getString("nama_penyewa");
+
+                   String[] data={a,b,c,d,e};
+                   tabmode.addRow(data);
+               }
+           }catch (Exception e) {
+               JOptionPane.showMessageDialog(null, "Data Tidak Ditemukan!");
+           }
     }//GEN-LAST:event_cariActionPerformed
 
     private void refreshbhapusActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_refreshbhapusActionPerformed
@@ -290,6 +351,10 @@ private void cari(){
     private void cari1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cari1ActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_cari1ActionPerformed
+
+    private void isicariKeyReleased(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_isicariKeyReleased
+        cari();
+    }//GEN-LAST:event_isicariKeyReleased
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton batalsewa;

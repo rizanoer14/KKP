@@ -354,9 +354,7 @@ new Timer(1000, taskPerformer).start();
     }// </editor-fold>//GEN-END:initComponents
 
     private void gedungActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_gedungActionPerformed
-        daftar_gedung n = new daftar_gedung();
-        panel.add(n);
-        n.setVisible(true);
+
     }//GEN-LAST:event_gedungActionPerformed
 
     private void jadwalActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jadwalActionPerformed
@@ -463,7 +461,9 @@ new Timer(1000, taskPerformer).start();
     }//GEN-LAST:event_saungActionPerformed
 
     private void gedung1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_gedung1ActionPerformed
-        // TODO add your handling code here:
+        daftar_gedung n = new daftar_gedung();
+        panel.add(n);
+        n.setVisible(true);
     }//GEN-LAST:event_gedung1ActionPerformed
 
     /**
