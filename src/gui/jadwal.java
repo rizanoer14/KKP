@@ -153,6 +153,9 @@ private void cari(){
         carinama = new javax.swing.JButton();
         updatesewa = new javax.swing.JButton();
         batalsewa = new javax.swing.JButton();
+        bayar = new javax.swing.JTextField();
+        jLabel2 = new javax.swing.JLabel();
+        bayar1 = new javax.swing.JTextField();
 
         setBackground(new java.awt.Color(255, 255, 255));
         setBorder(null);
@@ -207,7 +210,7 @@ private void cari(){
             jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel5Layout.createSequentialGroup()
                 .addComponent(jScrollPane4, javax.swing.GroupLayout.PREFERRED_SIZE, 186, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(0, 24, Short.MAX_VALUE))
+                .addGap(0, 0, Short.MAX_VALUE))
         );
 
         jPanel2.add(jPanel5, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 130, 580, 210));
@@ -299,6 +302,24 @@ private void cari(){
         });
         jPanel2.add(batalsewa, new org.netbeans.lib.awtextra.AbsoluteConstraints(340, 340, 110, 30));
 
+        bayar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                bayarActionPerformed(evt);
+            }
+        });
+        bayar.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyPressed(java.awt.event.KeyEvent evt) {
+                bayarKeyPressed(evt);
+            }
+        });
+        jPanel2.add(bayar, new org.netbeans.lib.awtextra.AbsoluteConstraints(150, 340, 140, 30));
+
+        jLabel2.setText("Bayar");
+        jPanel2.add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(110, 340, 30, 30));
+
+        bayar1.setText("jTextField1");
+        jPanel2.add(bayar1, new org.netbeans.lib.awtextra.AbsoluteConstraints(290, 370, -1, -1));
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
@@ -307,7 +328,7 @@ private void cari(){
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jPanel2, javax.swing.GroupLayout.DEFAULT_SIZE, 388, Short.MAX_VALUE)
+            .addComponent(jPanel2, javax.swing.GroupLayout.DEFAULT_SIZE, 390, Short.MAX_VALUE)
         );
 
         pack();
@@ -360,8 +381,10 @@ private void cari(){
         int bar = tabeljadwal.getSelectedRow();
         String a = tabmode.getValueAt(bar, 0).toString();
         String e = tabmode.getValueAt(bar, 4).toString();
+        String f = tabmode.getValueAt(bar,5).toString();
         kdsewa.setText(a);
         penyewa.setText(e);
+        bayar.setText(f);
     }//GEN-LAST:event_tabeljadwalMouseClicked
 
     private void batalsewabhapusActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_batalsewabhapusActionPerformed
@@ -384,12 +407,54 @@ private void cari(){
         // TODO add your handling code here:
     }//GEN-LAST:event_updatesewabhapusActionPerformed
 
+    private void bayarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_bayarActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_bayarActionPerformed
+
+    private void bayarKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_bayarKeyPressed
+        if(evt.getKeyCode() == evt.VK_ENTER){
+            String sql = "Select * pemesanan AND Insert into pemesanan (bayar,status) values (?,?)";
+           try {
+               Statement stat = conn.createStatement();
+               ResultSet hasil = stat.executeQuery(sql);
+               while(hasil.next()){
+                String h = hasil.getString("harga");
+                String f = hasil.getString("bayar");
+
+                int a = Integer.parseInt(f.trim());
+                int b = Integer.parseInt(g.trim());
+                int d = Integer.parseInt(h.trim());
+                
+                String x = "Lunas";
+                String y = "Belum Lunas";
+                String terpilih;
+                int c = a + b;
+                if ( c == d){
+                    terpilih = x;
+                    }
+                 else {
+                     terpilih = y;
+                    }
+                String z = String.valueOf(c);
+                PreparedStatement p=(PreparedStatement)conn.prepareStatement(sql);
+                p.setString(1,z);
+                 p.setString(2,terpilih);
+               }
+           }catch (Exception e) {
+               JOptionPane.showMessageDialog(null, "Data Tidak Ditemukan!");
+           }
+        }
+    }//GEN-LAST:event_bayarKeyPressed
+
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton batalsewa;
+    private javax.swing.JTextField bayar;
+    private javax.swing.JTextField bayar1;
     private javax.swing.JButton carinama;
     private javax.swing.JButton caritgl;
     private javax.swing.JTextField isicari;
     private javax.swing.JLabel jLabel1;
+    private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel4;
     private javax.swing.JPanel jPanel2;
     private javax.swing.JPanel jPanel5;

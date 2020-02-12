@@ -147,7 +147,7 @@ public String kd_gedung, nm_gedung, hrg;
                                 } else{
                                     String sql="Insert into pemesanan (kode_sewa,tanggal,kode_ruang,nama_ruang,"
                                             + "harga,waktu,id_penyewa,nama_penyewa,notelp,bayar,status) values (?,?,?,?,?,?,?,?,?,?,?)";  
-                                    PreparedStatement p=(PreparedStatement)conn.prepareStatement(sql);  
+                                    PreparedStatement p=(PreparedStatement)conn.prepareStatement(sql);
                                     p.setString(1,kdsewa.getText());
                                     p.setString(2,DateTime);
                                     p.setString(3,kdgedung.getText());
@@ -159,18 +159,18 @@ public String kd_gedung, nm_gedung, hrg;
                                     p.setString(9,notelp.getText());
                                     p.setString(10,bayar.getText());
                                     String terpilih;
-                                    String c = harga.getText();
+                                    //String c = harga.getText();
+                                    
                                     String d = bayar.getText();
-                                    if ( d != c){
-                                        terpilih = b;
-                                        System.out.println("harga"+d);
-                                        System.out.println("harga"+c);
-                                    }
+                                    String ab = harga.getText();
+                                    int i = Integer.parseInt(d.trim());
+                                    int j = Integer.parseInt(ab.trim());
+                                    if ( i == j){
+                                        terpilih = a;
+                                        }
                                      else {
-                                         terpilih = a;
-                                         System.out.println("harga"+d);
-                                        System.out.println("harga"+c);
-                                     }
+                                         terpilih = b;
+                                        }
                                         
                                     
                                     p.setString(11,terpilih);
