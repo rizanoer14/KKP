@@ -16,7 +16,7 @@ private Connection conn = new konek().connect();
 private DefaultTableModel tabmode;
  
  protected void datatable(){
-        Object[] Baris = {"Kode Sewa","Tanggal","Nama Gedung","Waktu","Penyewa"};
+        Object[] Baris = {"Kode Sewa","Tanggal","Nama Gedung","Waktu","Penyewa","Bayar","Status"};
         tabmode = new DefaultTableModel(null, Baris);
         tabeljadwal.setModel(tabmode);
         String sql = "select * from pemesanan order by tanggal asc";
@@ -30,9 +30,11 @@ private DefaultTableModel tabmode;
                 String c = hasil.getString("nama_ruang");
                 String d = hasil.getString("waktu");
                 String e = hasil.getString("nama_penyewa");
+                String f = hasil.getString("bayar");
+                String g = hasil.getString("status");
                 
                                 
-                String[] data={a,b,c,d,e};
+                String[] data={a,b,c,d,e,f,g};
                 tabmode.addRow(data);
             }
         }catch (SQLException e) {
@@ -41,7 +43,7 @@ private DefaultTableModel tabmode;
     }
  
  private void caribet(){
-       Object[] Baris = {"Kode Sewa","Tanggal","Nama Gedung","Waktu","Penyewa"};
+       Object[] Baris = {"Kode Sewa","Tanggal","Nama Gedung","Waktu","Penyewa","Bayar","Status"};
            tabmode = new DefaultTableModel(null, Baris);
            tabeljadwal.setModel(tabmode);
            String sql = "SELECT * FROM pemesanan WHERE tanggal or nama_penyewa like '%"+isicari.getText()+"%'";
@@ -54,8 +56,10 @@ private DefaultTableModel tabmode;
                 String c = hasil.getString("nama_ruang");
                 String d = hasil.getString("waktu");
                 String e = hasil.getString("nama_penyewa");
+                String f = hasil.getString("bayar");
+                String g = hasil.getString("status");
 
-                   String[] data={a,b,c,d,e};
+                   String[] data={a,b,c,d,e,f,g};
                    tabmode.addRow(data);
                }
            }catch (Exception e) {
@@ -63,7 +67,7 @@ private DefaultTableModel tabmode;
         }
  }
 private void cari(){
-       Object[] Baris = {"Kode Sewa","Tanggal","Nama Gedung","Waktu","Penyewa"};
+       Object[] Baris = {"Kode Sewa","Tanggal","Nama Gedung","Waktu","Penyewa","Bayar","Status"};
            tabmode = new DefaultTableModel(null, Baris);
            tabeljadwal.setModel(tabmode);
            String sql = "select * from pemesanan where tanggal like '%"+isicari.getText()+"%' "+
@@ -77,8 +81,11 @@ private void cari(){
                 String c = hasil.getString("nama_ruang");
                 String d = hasil.getString("waktu");
                 String e = hasil.getString("nama_penyewa");
+                String f = hasil.getString("bayar");
+                String g = hasil.getString("status");
 
-                   String[] data={a,b,c,d,e};
+
+                   String[] data={a,b,c,d,e,f,g};
                    tabmode.addRow(data);
                }
            }catch (Exception e) {
@@ -140,11 +147,12 @@ private void cari(){
         caritgl = new javax.swing.JButton();
         refresh = new javax.swing.JButton();
         isicari = new javax.swing.JTextField();
-        batalsewa = new javax.swing.JButton();
         penyewa = new javax.swing.JTextField();
         jdc1 = new com.toedter.calendar.JDateChooser();
         jdc2 = new com.toedter.calendar.JDateChooser();
         carinama = new javax.swing.JButton();
+        updatesewa = new javax.swing.JButton();
+        batalsewa = new javax.swing.JButton();
 
         setBackground(new java.awt.Color(255, 255, 255));
         setBorder(null);
@@ -169,13 +177,13 @@ private void cari(){
         tabeljadwal.setFont(new java.awt.Font("Segoe UI", 0, 12)); // NOI18N
         tabeljadwal.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
-                {null, null, null, null, null, null},
-                {null, null, null, null, null, null},
-                {null, null, null, null, null, null},
-                {null, null, null, null, null, null}
+                {null, null, null, null, null, null, null},
+                {null, null, null, null, null, null, null},
+                {null, null, null, null, null, null, null},
+                {null, null, null, null, null, null, null}
             },
             new String [] {
-                "Kode Sewa", "Tanggal", "Nama Gedung", "Waktu", "Penyewa", "Dp"
+                "Kode Sewa", "Tanggal", "Nama Gedung", "Waktu", "Penyewa", "Bayar (Rp)", "Status"
             }
         ));
         tabeljadwal.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
@@ -198,15 +206,15 @@ private void cari(){
         jPanel5Layout.setVerticalGroup(
             jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel5Layout.createSequentialGroup()
-                .addComponent(jScrollPane4, javax.swing.GroupLayout.DEFAULT_SIZE, 199, Short.MAX_VALUE)
-                .addContainerGap())
+                .addComponent(jScrollPane4, javax.swing.GroupLayout.PREFERRED_SIZE, 186, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(0, 24, Short.MAX_VALUE))
         );
 
         jPanel2.add(jPanel5, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 130, 580, 210));
 
         kdsewa.setFont(new java.awt.Font("Segoe UI", 0, 12)); // NOI18N
         kdsewa.setText("kodesewa");
-        jPanel2.add(kdsewa, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 350, 70, 30));
+        jPanel2.add(kdsewa, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 60, 70, 30));
 
         jLabel4.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
         jLabel4.setText("Nama");
@@ -232,7 +240,7 @@ private void cari(){
                 refreshbhapusActionPerformed(evt);
             }
         });
-        jPanel2.add(refresh, new org.netbeans.lib.awtextra.AbsoluteConstraints(390, 350, 80, 30));
+        jPanel2.add(refresh, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 340, 80, 30));
 
         isicari.setFont(new java.awt.Font("Segoe UI", 0, 12)); // NOI18N
         isicari.addActionListener(new java.awt.event.ActionListener() {
@@ -250,22 +258,9 @@ private void cari(){
         });
         jPanel2.add(isicari, new org.netbeans.lib.awtextra.AbsoluteConstraints(410, 90, 120, 30));
 
-        batalsewa.setBackground(new java.awt.Color(255, 255, 255));
-        batalsewa.setFont(new java.awt.Font("Segoe UI", 0, 12)); // NOI18N
-        batalsewa.setForeground(new java.awt.Color(153, 0, 204));
-        batalsewa.setIcon(new javax.swing.ImageIcon(getClass().getResource("/icon/ihapus.png"))); // NOI18N
-        batalsewa.setText("Batal Sewa");
-        batalsewa.setBorder(null);
-        batalsewa.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                batalsewabhapusActionPerformed(evt);
-            }
-        });
-        jPanel2.add(batalsewa, new org.netbeans.lib.awtextra.AbsoluteConstraints(480, 350, 100, 30));
-
         penyewa.setFont(new java.awt.Font("Segoe UI", 0, 12)); // NOI18N
         penyewa.setText("penyewa");
-        jPanel2.add(penyewa, new org.netbeans.lib.awtextra.AbsoluteConstraints(90, 350, 60, 30));
+        jPanel2.add(penyewa, new org.netbeans.lib.awtextra.AbsoluteConstraints(80, 60, 60, 30));
         jPanel2.add(jdc1, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 90, 130, 30));
         jPanel2.add(jdc2, new org.netbeans.lib.awtextra.AbsoluteConstraints(140, 90, 130, 30));
 
@@ -277,6 +272,32 @@ private void cari(){
             }
         });
         jPanel2.add(carinama, new org.netbeans.lib.awtextra.AbsoluteConstraints(530, 90, 50, 30));
+
+        updatesewa.setBackground(new java.awt.Color(255, 255, 255));
+        updatesewa.setFont(new java.awt.Font("Segoe UI", 0, 12)); // NOI18N
+        updatesewa.setForeground(new java.awt.Color(255, 153, 0));
+        updatesewa.setIcon(new javax.swing.ImageIcon(getClass().getResource("/icon/iedit.png"))); // NOI18N
+        updatesewa.setText("Update Sewa");
+        updatesewa.setBorder(null);
+        updatesewa.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                updatesewabhapusActionPerformed(evt);
+            }
+        });
+        jPanel2.add(updatesewa, new org.netbeans.lib.awtextra.AbsoluteConstraints(470, 340, 110, 30));
+
+        batalsewa.setBackground(new java.awt.Color(255, 255, 255));
+        batalsewa.setFont(new java.awt.Font("Segoe UI", 0, 12)); // NOI18N
+        batalsewa.setForeground(new java.awt.Color(153, 0, 204));
+        batalsewa.setIcon(new javax.swing.ImageIcon(getClass().getResource("/icon/ihapus.png"))); // NOI18N
+        batalsewa.setText("Batal Sewa");
+        batalsewa.setBorder(null);
+        batalsewa.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                batalsewabhapusActionPerformed(evt);
+            }
+        });
+        jPanel2.add(batalsewa, new org.netbeans.lib.awtextra.AbsoluteConstraints(340, 340, 110, 30));
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -298,7 +319,7 @@ private void cari(){
         String from = (String) sdf.format(jdc1.getDate());
         String to = (String) sdf.format(jdc2.getDate());
         
-        Object[] Baris = {"Kode Sewa","Tanggal","Nama Gedung","Waktu","Penyewa"};
+        Object[] Baris = {"Kode Sewa","Tanggal","Nama Gedung","Waktu","Penyewa","Bayar","Status"};
            tabmode = new DefaultTableModel(null, Baris);
            tabeljadwal.setModel(tabmode);
            String sql = "select * from pemesanan where tanggal BETWEEN '"+from+"' AND '"+to+"' "
@@ -313,8 +334,10 @@ private void cari(){
                 String c = hasil.getString("nama_ruang");
                 String d = hasil.getString("waktu");
                 String e = hasil.getString("nama_penyewa");
+                String f = hasil.getString("bayar");
+                String g = hasil.getString("status");
 
-                   String[] data={a,b,c,d,e};
+                   String[] data={a,b,c,d,e,f,g};
                    tabmode.addRow(data);
                }
            }catch (Exception e) {
@@ -357,6 +380,10 @@ private void cari(){
         cari();
     }//GEN-LAST:event_isicariKeyReleased
 
+    private void updatesewabhapusActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_updatesewabhapusActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_updatesewabhapusActionPerformed
+
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton batalsewa;
     private javax.swing.JButton carinama;
@@ -373,5 +400,6 @@ private void cari(){
     private javax.swing.JTextField penyewa;
     private javax.swing.JButton refresh;
     private javax.swing.JTable tabeljadwal;
+    private javax.swing.JButton updatesewa;
     // End of variables declaration//GEN-END:variables
 }

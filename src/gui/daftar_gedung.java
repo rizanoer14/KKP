@@ -247,7 +247,7 @@ public class daftar_gedung extends javax.swing.JInternalFrame {
     }//GEN-LAST:event_kartiniMouseClicked
 
     private void puspitasudirmanMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_puspitasudirmanMouseClicked
-        new detail_kartini().show();
+        new detail_puspi().show();
     }//GEN-LAST:event_puspitasudirmanMouseClicked
 
     private void pandanagusMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_pandanagusMouseClicked

@@ -46,6 +46,7 @@ public String kd_gedung, nm_gedung, hrg;
         malam.setEnabled(true);
         nm_penyewa.setText("");   
         notelp.setText("");
+       
     }
     
     public void kodesewa(){
@@ -116,14 +117,21 @@ public String kd_gedung, nm_gedung, hrg;
         SimpleDateFormat ft = new SimpleDateFormat ("yyyy-MM-dd");
         String DateTime = ft.format(HariSekarang);
         
+        String a = "Lunas";
+        String b = "Belum Lunas";
+        
+        
+        
         try{   
             String pilih = " ";
-            if(siang.isSelected()) pilih="Siang";
-            else if(siang.isSelected()) pilih="Malam";
-            else  JOptionPane.showMessageDialog(this,"Belum dipilih");
+            if(siang.isSelected())pilih="Siang";
+             else if(malam.isSelected()) pilih="Malam";
+             else 
+                 pilih="";
+            //JOptionPane.showMessageDialog(this,"");
             
             if(pilih.length()==0){
-                JOptionPane.showMessageDialog(this,"Belum dipilih");
+                JOptionPane.showMessageDialog(this,"Pilih Waktu");
             } else {
                 if(nm_penyewa.getText().length()==0){
                     JOptionPane.showMessageDialog(this,"Nama Belum Diisi");
@@ -132,25 +140,47 @@ public String kd_gedung, nm_gedung, hrg;
                     if(notelp.getText().length()==0){
                         JOptionPane.showMessageDialog(this,"Nomor Telepon Belum Diisi");
                         notelp.requestFocus();
-                    } else{
-                        String sql="Insert into pemesanan (kode_sewa,tanggal,kode_ruang,nama_ruang,"
-                                + "harga,waktu,id_penyewa,nama_penyewa,notelp) values (?,?,?,?,?,?,?,?,?)";  
-                        PreparedStatement p=(PreparedStatement)conn.prepareStatement(sql);  
-                        p.setString(1,kdsewa.getText());
-                        p.setString(2,DateTime);
-                        p.setString(3,kdgedung.getText());
-                        p.setString(4,nama_gedung.getText());
-                        p.setString(5,harga.getText());
-                        p.setString(6, pilih);
-                        p.setString(7,kdpenyewa.getText());
-                        p.setString(8,nm_penyewa.getText());
-                        p.setString(9,notelp.getText());
-                        p.executeUpdate();
-                        JOptionPane.showMessageDialog(this,"Data Telah Tersimpan");
-                        dispose();
-                    }
+                    } else {
+                        if(bayar.getText().length()==0){
+                            JOptionPane.showMessageDialog(this,"Pembayaran Belum Diisi");
+                            bayar.requestFocus();
+                                } else{
+                                    String sql="Insert into pemesanan (kode_sewa,tanggal,kode_ruang,nama_ruang,"
+                                            + "harga,waktu,id_penyewa,nama_penyewa,notelp,bayar,status) values (?,?,?,?,?,?,?,?,?,?,?)";  
+                                    PreparedStatement p=(PreparedStatement)conn.prepareStatement(sql);  
+                                    p.setString(1,kdsewa.getText());
+                                    p.setString(2,DateTime);
+                                    p.setString(3,kdgedung.getText());
+                                    p.setString(4,nama_gedung.getText());
+                                    p.setString(5,harga.getText());
+                                    p.setString(6, pilih);
+                                    p.setString(7,kdpenyewa.getText());
+                                    p.setString(8,nm_penyewa.getText());
+                                    p.setString(9,notelp.getText());
+                                    p.setString(10,bayar.getText());
+                                    String terpilih;
+                                    String c = harga.getText();
+                                    String d = bayar.getText();
+                                    if ( d != c){
+                                        terpilih = b;
+                                        System.out.println("harga"+d);
+                                        System.out.println("harga"+c);
+                                    }
+                                     else {
+                                         terpilih = a;
+                                         System.out.println("harga"+d);
+                                        System.out.println("harga"+c);
+                                     }
+                                        
+                                    
+                                    p.setString(11,terpilih);
+                                    p.executeUpdate();
+                                    JOptionPane.showMessageDialog(this,"Data Telah Tersimpan");
+                                    dispose();
+                                }
                 }    
-            }   
+            } 
+            }
        }catch(SQLException e){ 
             System.out.println(e);  
        }
@@ -185,6 +215,8 @@ public String kd_gedung, nm_gedung, hrg;
         batal = new javax.swing.JButton();
         kdgedung = new javax.swing.JTextField();
         cekgedung = new javax.swing.JButton();
+        Lokasi2 = new javax.swing.JLabel();
+        bayar = new javax.swing.JTextField();
 
         addWindowListener(new java.awt.event.WindowAdapter() {
             public void windowClosing(java.awt.event.WindowEvent evt) {
@@ -295,6 +327,11 @@ public String kd_gedung, nm_gedung, hrg;
             }
         });
 
+        Lokasi2.setFont(new java.awt.Font("Segoe UI", 0, 12)); // NOI18N
+        Lokasi2.setText("Bayar (Rp)");
+
+        bayar.setFont(new java.awt.Font("Segoe UI", 0, 12)); // NOI18N
+
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
         jPanel1Layout.setHorizontalGroup(
@@ -309,8 +346,8 @@ public String kd_gedung, nm_gedung, hrg;
                             .addComponent(Harga))
                         .addGap(29, 29, 29)
                         .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(kdsewa, javax.swing.GroupLayout.PREFERRED_SIZE, 81, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(tgl, javax.swing.GroupLayout.PREFERRED_SIZE, 130, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                            .addComponent(tgl, javax.swing.GroupLayout.PREFERRED_SIZE, 130, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(kdsewa, javax.swing.GroupLayout.PREFERRED_SIZE, 68, javax.swing.GroupLayout.PREFERRED_SIZE)))
                     .addComponent(cekgedung)
                     .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                         .addGroup(jPanel1Layout.createSequentialGroup()
@@ -332,30 +369,30 @@ public String kd_gedung, nm_gedung, hrg;
                                     .addGap(10, 10, 10)
                                     .addComponent(malam))
                                 .addComponent(harga, javax.swing.GroupLayout.PREFERRED_SIZE, 104, javax.swing.GroupLayout.PREFERRED_SIZE)))))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 42, Short.MAX_VALUE)
+                .addGap(42, 42, 42)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
                         .addComponent(simpan)
                         .addGap(39, 39, 39)
                         .addComponent(batal, javax.swing.GroupLayout.PREFERRED_SIZE, 91, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addContainerGap())
-                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
-                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                        .addGroup(jPanel1Layout.createSequentialGroup()
+                            .addComponent(nama5)
+                            .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                            .addComponent(kdpenyewa, javax.swing.GroupLayout.PREFERRED_SIZE, 68, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addGap(73, 73, 73))
+                        .addGroup(jPanel1Layout.createSequentialGroup()
                             .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                .addGroup(jPanel1Layout.createSequentialGroup()
-                                    .addComponent(nama2)
-                                    .addGap(18, 18, 18))
-                                .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
-                                    .addComponent(nama5)
-                                    .addGap(25, 25, 25)))
-                            .addGroup(jPanel1Layout.createSequentialGroup()
+                                .addComponent(nama2)
                                 .addComponent(Lokasi1)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)))
-                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(notelp, javax.swing.GroupLayout.PREFERRED_SIZE, 101, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(kdpenyewa, javax.swing.GroupLayout.PREFERRED_SIZE, 76, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(nm_penyewa, javax.swing.GroupLayout.PREFERRED_SIZE, 101, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addGap(21, 21, 21))))
+                                .addComponent(Lokasi2))
+                            .addGap(18, 18, 18)
+                            .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                .addComponent(notelp, javax.swing.GroupLayout.Alignment.TRAILING)
+                                .addComponent(nm_penyewa)
+                                .addComponent(bayar, javax.swing.GroupLayout.Alignment.TRAILING))
+                            .addGap(21, 21, 21)))))
         );
         jPanel1Layout.setVerticalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -367,14 +404,18 @@ public String kd_gedung, nm_gedung, hrg;
                         .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                             .addComponent(nama5)
                             .addComponent(kdpenyewa, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addGap(18, 18, 18)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                             .addComponent(nm_penyewa, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addComponent(nama2))
-                        .addGap(18, 18, 18)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                             .addComponent(Lokasi1)
                             .addComponent(notelp, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(Lokasi2)
+                            .addComponent(bayar, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                         .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                             .addComponent(batal)
@@ -406,7 +447,7 @@ public String kd_gedung, nm_gedung, hrg;
                                 .addComponent(siang)
                                 .addComponent(malam))
                             .addComponent(Lokasi))
-                        .addGap(0, 60, Short.MAX_VALUE)))
+                        .addGap(0, 51, Short.MAX_VALUE)))
                 .addContainerGap())
         );
 
@@ -520,7 +561,9 @@ public String kd_gedung, nm_gedung, hrg;
     private javax.swing.JLabel Harga1;
     private javax.swing.JLabel Lokasi;
     private javax.swing.JLabel Lokasi1;
+    private javax.swing.JLabel Lokasi2;
     private javax.swing.JButton batal;
+    private javax.swing.JTextField bayar;
     private javax.swing.JButton cekgedung;
     private javax.swing.JTextField harga;
     private javax.swing.JLabel jLabel1;
