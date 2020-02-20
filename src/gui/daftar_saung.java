@@ -38,9 +38,9 @@ public class daftar_saung extends javax.swing.JInternalFrame {
         setForeground(java.awt.Color.white);
         setIconifiable(true);
         setMaximizable(true);
-        setTitle("DAFTAR GEDUNG");
+        setTitle("DAFTAR SAUNG");
         setName(""); // NOI18N
-        setPreferredSize(new java.awt.Dimension(595, 415));
+        setPreferredSize(new java.awt.Dimension(595, 480));
         setRequestFocusEnabled(false);
 
         jScrollPane1.setHorizontalScrollBarPolicy(javax.swing.ScrollPaneConstants.HORIZONTAL_SCROLLBAR_NEVER);
@@ -48,9 +48,9 @@ public class daftar_saung extends javax.swing.JInternalFrame {
         panel2.setBackground(new java.awt.Color(255, 255, 255));
         panel2.setPreferredSize(new java.awt.Dimension(580, 1630));
 
-        jLabel3.setFont(new java.awt.Font("Segoe UI", 0, 24)); // NOI18N
+        jLabel3.setFont(new java.awt.Font("Segoe UI", 1, 24)); // NOI18N
         jLabel3.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        jLabel3.setText("Daftar Saung (Tempat Berkumpul)");
+        jLabel3.setText("Daftar Fasilitas Taman (Saung)");
 
         kana.setFont(new java.awt.Font("Segoe UI", 1, 13)); // NOI18N
         kana.setIcon(new javax.swing.ImageIcon(getClass().getResource("/image/kar2.jpg"))); // NOI18N
@@ -384,75 +384,75 @@ public class daftar_saung extends javax.swing.JInternalFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void arealMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_arealMouseClicked
-         new detail_areal().show();
+         new ds_areal().show();
     }//GEN-LAST:event_arealMouseClicked
 
     private void nusaMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_nusaMouseClicked
-         new detail_nusa().show();
+         new ds_nusa().show();
     }//GEN-LAST:event_nusaMouseClicked
 
     private void plazaMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_plazaMouseClicked
-         new detail_plaza().show();
+         new ds_plaza().show();
     }//GEN-LAST:event_plazaMouseClicked
 
     private void kanaMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_kanaMouseClicked
-         new detail_kana().show();
+         new ds_kana().show();
     }//GEN-LAST:event_kanaMouseClicked
 
     private void sokaMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_sokaMouseClicked
-         new detail_soka().show();
+         new ds_soka().show();
     }//GEN-LAST:event_sokaMouseClicked
 
     private void seruniMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_seruniMouseClicked
-         new detail_seruni().show();
+         new ds_seruni().show();
     }//GEN-LAST:event_seruniMouseClicked
 
     private void anggrekMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_anggrekMouseClicked
-         new detail_anggrek().show();
+         new ds_anggrek().show();
     }//GEN-LAST:event_anggrekMouseClicked
 
     private void tulipMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_tulipMouseClicked
-         new detail_tulip().show();
+         new ds_tulip().show();
     }//GEN-LAST:event_tulipMouseClicked
 
     private void jepangMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jepangMouseClicked
-         new detail_jepang().show();
+         new ds_jepang().show();
     }//GEN-LAST:event_jepangMouseClicked
 
     private void alamandaMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_alamandaMouseClicked
-         new detail_alamanda().show();
+         new ds_alamanda().show();
     }//GEN-LAST:event_alamandaMouseClicked
 
     private void kaktusKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_kaktusKeyPressed
-        new detail_kaktus().show();
+        new ds_kaktus().show();
     }//GEN-LAST:event_kaktusKeyPressed
 
     private void puspitaMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_puspitaMouseClicked
-         new detail_puspita().show();
+         new ds_puspita().show();
     }//GEN-LAST:event_puspitaMouseClicked
 
     private void siagaMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_siagaMouseClicked
-         new detail_siaga().show();
+         new ds_siaga().show();
     }//GEN-LAST:event_siagaMouseClicked
 
     private void penegakMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_penegakMouseEntered
-         new detail_penegak().show();
+         new ds_penegak().show();
     }//GEN-LAST:event_penegakMouseEntered
 
     private void penggalangMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_penggalangMouseClicked
-         new detail_penggalang().show();
+         new ds_penggalang().show();
     }//GEN-LAST:event_penggalangMouseClicked
 
     private void tunasMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_tunasMouseClicked
-         new detail_tunas().show();
+         new ds_tunas().show();
     }//GEN-LAST:event_tunasMouseClicked
 
     private void diskusiMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_diskusiMouseClicked
-         new detail_diskusi().show();
+         new ds_diskusi().show();
     }//GEN-LAST:event_diskusiMouseClicked
 
     private void healthMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_healthMouseClicked
-         new detail_health().show();
+         new ds_health().show();
     }//GEN-LAST:event_healthMouseClicked
 
 

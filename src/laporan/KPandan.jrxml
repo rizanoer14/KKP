@@ -1,0 +1,350 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="null" language="groovy" pageWidth="595" pageHeight="842" columnWidth="535" leftMargin="20" rightMargin="20" topMargin="20" bottomMargin="20" uuid="f58ad765-20b6-4d40-8637-5883fc75cd52">
+	<property name="ireport.zoom" value="1.0"/>
+	<property name="ireport.x" value="0"/>
+	<property name="ireport.y" value="0"/>
+	<style name="Title" forecolor="#FFFFFF" fontName="Times New Roman" fontSize="50" isBold="false" pdfFontName="Times-Bold"/>
+	<style name="SubTitle" forecolor="#CCCCCC" fontName="Times New Roman" fontSize="18" isBold="false" pdfFontName="Times-Roman"/>
+	<style name="Column header" forecolor="#666666" fontName="Times New Roman" fontSize="14" isBold="true" pdfFontName="Times-Roman"/>
+	<style name="Detail" mode="Transparent" fontName="Times New Roman" pdfFontName="Times-Roman"/>
+	<style name="Row" mode="Transparent" fontName="Times New Roman" pdfFontName="Times-Roman">
+		<conditionalStyle>
+			<conditionExpression><![CDATA[$V{REPORT_COUNT}%2 == 0]]></conditionExpression>
+			<style mode="Opaque" backcolor="#F0EFEF"/>
+		</conditionalStyle>
+	</style>
+	<parameter name="tgl1" class="java.lang.String">
+		<defaultValueExpression><![CDATA[]]></defaultValueExpression>
+	</parameter>
+	<parameter name="tgl2" class="java.lang.String">
+		<defaultValueExpression><![CDATA[]]></defaultValueExpression>
+	</parameter>
+	<queryString>
+		<![CDATA[SELECT
+     pemesanan.`kode_sewa` AS pemesanan_kode_sewa,
+     pemesanan.`tanggal` AS pemesanan_tanggal,
+     pemesanan.`kode_ruang` AS pemesanan_kode_ruang,
+     pemesanan.`nama_ruang` AS pemesanan_nama_ruang,
+     pemesanan.`harga` AS pemesanan_harga,
+     pemesanan.`waktu` AS pemesanan_waktu,
+     pemesanan.`id_penyewa` AS pemesanan_id_penyewa,
+     pemesanan.`nama_penyewa` AS pemesanan_nama_penyewa,
+     pemesanan.`notelp` AS pemesanan_notelp,
+     pemesanan.`bayar` AS pemesanan_bayar,
+     pemesanan.`Status` AS pemesanan_Status
+FROM
+     `pemesanan` pemesanan
+
+where kode_ruang='G006' and tanggal between $P{tgl1} and $P{tgl2}
+ORDER BY tanggal ASC]]>
+	</queryString>
+	<field name="pemesanan_kode_sewa" class="java.lang.String"/>
+	<field name="pemesanan_tanggal" class="java.sql.Date"/>
+	<field name="pemesanan_kode_ruang" class="java.lang.String"/>
+	<field name="pemesanan_nama_ruang" class="java.lang.String"/>
+	<field name="pemesanan_harga" class="java.lang.Integer"/>
+	<field name="pemesanan_waktu" class="java.lang.String"/>
+	<field name="pemesanan_id_penyewa" class="java.lang.String"/>
+	<field name="pemesanan_nama_penyewa" class="java.lang.String"/>
+	<field name="pemesanan_notelp" class="java.lang.String"/>
+	<field name="pemesanan_bayar" class="java.lang.Integer"/>
+	<field name="pemesanan_Status" class="java.lang.String"/>
+	<variable name="pemesanan_harga_1" class="java.lang.Integer" resetType="Column" calculation="Sum">
+		<variableExpression><![CDATA[$F{pemesanan_harga}]]></variableExpression>
+	</variable>
+	<background>
+		<band splitType="Stretch"/>
+	</background>
+	<title>
+		<band height="132" splitType="Stretch">
+			<frame>
+				<reportElement mode="Opaque" x="0" y="0" width="433" height="95" backcolor="#000000" uuid="65e31e09-86ce-47c6-9ddc-c1e0a9288a50"/>
+				<staticText>
+					<reportElement style="Title" x="0" y="0" width="406" height="66" uuid="ed0e9aa4-02f1-4fad-985d-df0d73061aaa"/>
+					<textElement>
+						<font isBold="false"/>
+					</textElement>
+					<text><![CDATA[Laporan Keuangan]]></text>
+				</staticText>
+				<staticText>
+					<reportElement style="SubTitle" x="60" y="66" width="346" height="29" uuid="a965b663-3af4-4829-9137-976161842da7"/>
+					<textElement textAlignment="Center">
+						<font fontName="Trebuchet MS" size="22" isBold="true"/>
+					</textElement>
+					<text><![CDATA[Pandansari]]></text>
+				</staticText>
+			</frame>
+			<frame>
+				<reportElement mode="Opaque" x="0" y="109" width="451" height="23" forecolor="#000000" backcolor="#666666" uuid="cac0ce92-2497-4027-8a31-e8c8d6fc2333"/>
+				<textField pattern="dd-MMM-yy">
+					<reportElement x="133" y="2" width="68" height="20" forecolor="#FFFFFF" uuid="2e2ba315-bb8e-42ae-a406-827b8070e8f9"/>
+					<textElement verticalAlignment="Middle">
+						<font fontName="Segoe UI" size="12"/>
+					</textElement>
+					<textFieldExpression><![CDATA[$P{tgl2}]]></textFieldExpression>
+				</textField>
+				<staticText>
+					<reportElement x="114" y="2" width="20" height="20" forecolor="#FFFFFF" uuid="3551ee1f-5ff8-4717-bdd6-fa2e76da0f73"/>
+					<textElement textAlignment="Center" verticalAlignment="Middle">
+						<font fontName="Segoe UI" size="12"/>
+					</textElement>
+					<text><![CDATA[-]]></text>
+				</staticText>
+				<staticText>
+					<reportElement x="0" y="2" width="50" height="20" forecolor="#FFFFFF" uuid="2d571175-1509-49cf-99c9-afd339fdef11"/>
+					<textElement verticalAlignment="Middle">
+						<font fontName="Segoe UI" size="12" isBold="true"/>
+					</textElement>
+					<text><![CDATA[Tanggal :]]></text>
+				</staticText>
+				<textField pattern="dd-MMM-yy">
+					<reportElement x="56" y="2" width="65" height="20" forecolor="#FFFFFF" uuid="2abfdeac-cf36-4273-aac5-1769d5000b13"/>
+					<textElement verticalAlignment="Middle">
+						<font fontName="Segoe UI" size="12"/>
+					</textElement>
+					<textFieldExpression><![CDATA[$P{tgl1}]]></textFieldExpression>
+				</textField>
+			</frame>
+			<image>
+				<reportElement x="446" y="0" width="107" height="120" uuid="3b4a3228-b485-42b7-a43f-e89032ae73f8"/>
+				<imageExpression><![CDATA["C:\\Users\\Hp\\Documents\\NetBeansProjects\\KKP\\KKP\\src\\icon\\wiladatika.png"]]></imageExpression>
+			</image>
+		</band>
+	</title>
+	<pageHeader>
+		<band splitType="Stretch"/>
+	</pageHeader>
+	<columnHeader>
+		<band height="32" splitType="Stretch">
+			<staticText>
+				<reportElement style="Column header" mode="Opaque" x="253" y="9" width="60" height="18" forecolor="#FFFFFF" backcolor="#006666" uuid="9a5ef786-bb59-4463-aa84-c0fd3f40bb4f"/>
+				<textElement textAlignment="Center">
+					<font fontName="Segoe UI" size="11" isBold="true"/>
+				</textElement>
+				<text><![CDATA[Waktu]]></text>
+			</staticText>
+			<staticText>
+				<reportElement style="Column header" mode="Opaque" x="398" y="9" width="90" height="18" forecolor="#FFFFFF" backcolor="#006666" uuid="4210a49d-b4ac-43b9-9771-1adee12b9787"/>
+				<textElement textAlignment="Center">
+					<font fontName="Segoe UI" size="11" isBold="true"/>
+				</textElement>
+				<text><![CDATA[No. Telpon]]></text>
+			</staticText>
+			<staticText>
+				<reportElement style="Column header" mode="Opaque" x="1" y="9" width="66" height="18" forecolor="#FFFFFF" backcolor="#006666" uuid="b96a1dbc-7e19-43f0-8bcb-252bb6b5b666"/>
+				<textElement textAlignment="Center">
+					<font fontName="Segoe UI" size="11" isBold="true"/>
+				</textElement>
+				<text><![CDATA[Kode Sewa]]></text>
+			</staticText>
+			<staticText>
+				<reportElement style="Column header" mode="Opaque" x="488" y="9" width="68" height="18" forecolor="#FFFFFF" backcolor="#006666" uuid="97241103-333c-4fd5-b5cf-ba601ad1129b"/>
+				<textElement textAlignment="Center">
+					<font fontName="Segoe UI" size="11" isBold="true"/>
+				</textElement>
+				<text><![CDATA[Bayar]]></text>
+			</staticText>
+			<staticText>
+				<reportElement style="Column header" mode="Opaque" x="61" y="9" width="71" height="18" forecolor="#FFFFFF" backcolor="#006666" uuid="d0ac5fc0-bdbd-4e6e-b4ff-17ac2974e10e"/>
+				<textElement textAlignment="Center">
+					<font fontName="Segoe UI" size="11" isBold="true"/>
+				</textElement>
+				<text><![CDATA[Tanggal]]></text>
+			</staticText>
+			<staticText>
+				<reportElement style="Column header" mode="Opaque" x="125" y="9" width="75" height="18" forecolor="#FFFFFF" backcolor="#006666" uuid="16ea4ecb-9483-432b-9ba5-c46eb94af5f5"/>
+				<textElement textAlignment="Center">
+					<font fontName="Segoe UI" size="11" isBold="true"/>
+				</textElement>
+				<text><![CDATA[Gedung]]></text>
+			</staticText>
+			<staticText>
+				<reportElement style="Column header" mode="Opaque" x="193" y="9" width="61" height="18" forecolor="#FFFFFF" backcolor="#006666" uuid="0586cc81-deb5-440c-a3c0-020571c2a364"/>
+				<textElement textAlignment="Center">
+					<font fontName="Segoe UI" size="11" isBold="true"/>
+				</textElement>
+				<text><![CDATA[Harga]]></text>
+			</staticText>
+			<staticText>
+				<reportElement style="Column header" mode="Opaque" x="309" y="9" width="89" height="18" forecolor="#FFFFFF" backcolor="#006666" uuid="cbfd7ce1-7f66-4d78-9925-7efd2bbab607"/>
+				<textElement textAlignment="Center">
+					<font fontName="Segoe UI" size="11" isBold="true"/>
+				</textElement>
+				<text><![CDATA[Pelanggan]]></text>
+			</staticText>
+		</band>
+	</columnHeader>
+	<detail>
+		<band height="26" splitType="Stretch">
+			<frame>
+				<reportElement style="Detail" mode="Opaque" x="0" y="5" width="555" height="18" uuid="699b3363-44fd-4eb0-8e03-386a85e0e679"/>
+				<staticText>
+					<reportElement x="488" y="1" width="21" height="17" uuid="2be7ddd4-db88-4f1a-b222-59320d81251e"/>
+					<textElement verticalAlignment="Middle"/>
+					<text><![CDATA[Rp]]></text>
+				</staticText>
+				<staticText>
+					<reportElement x="190" y="1" width="21" height="17" uuid="e11f38cc-de8b-4d6b-854d-d6f58530e268"/>
+					<textElement verticalAlignment="Middle"/>
+					<text><![CDATA[Rp]]></text>
+				</staticText>
+				<textField isStretchWithOverflow="true">
+					<reportElement style="Detail" positionType="Float" x="3" y="0" width="61" height="18" uuid="e3bf114e-de35-4691-850a-b32a20766a28"/>
+					<textElement textAlignment="Center" verticalAlignment="Middle">
+						<font fontName="Segoe UI" size="11"/>
+					</textElement>
+					<textFieldExpression><![CDATA[$F{pemesanan_kode_sewa}]]></textFieldExpression>
+				</textField>
+				<textField isStretchWithOverflow="true" pattern="dd-MM-yyyy">
+					<reportElement style="Detail" positionType="Float" x="64" y="0" width="59" height="18" uuid="9e79aa7c-7ca1-471e-9852-89710390f581"/>
+					<textElement verticalAlignment="Middle">
+						<font fontName="Segoe UI" size="11"/>
+					</textElement>
+					<textFieldExpression><![CDATA[$F{pemesanan_tanggal}]]></textFieldExpression>
+				</textField>
+				<textField isStretchWithOverflow="true" pattern="#,##0">
+					<reportElement style="Detail" positionType="Float" x="499" y="0" width="52" height="18" uuid="755aaedd-24ef-4fbe-b634-6f0be6d4fe93"/>
+					<textElement textAlignment="Right" verticalAlignment="Middle">
+						<font fontName="Segoe UI" size="11"/>
+					</textElement>
+					<textFieldExpression><![CDATA[$F{pemesanan_bayar}]]></textFieldExpression>
+				</textField>
+				<textField isStretchWithOverflow="true" pattern="#,##0">
+					<reportElement style="Detail" positionType="Float" x="203" y="0" width="48" height="18" uuid="29b7a443-bd66-4511-83f7-2c6a1ffb7843"/>
+					<textElement textAlignment="Right" verticalAlignment="Middle">
+						<font fontName="Segoe UI" size="11"/>
+					</textElement>
+					<textFieldExpression><![CDATA[$F{pemesanan_harga}]]></textFieldExpression>
+				</textField>
+				<textField isStretchWithOverflow="true">
+					<reportElement style="Detail" positionType="Float" x="253" y="0" width="51" height="18" uuid="3c7432b9-dda0-452a-ad64-0512641e9c52"/>
+					<textElement textAlignment="Center" verticalAlignment="Middle">
+						<font fontName="Segoe UI" size="11"/>
+					</textElement>
+					<textFieldExpression><![CDATA[$F{pemesanan_waktu}]]></textFieldExpression>
+				</textField>
+				<textField isStretchWithOverflow="true">
+					<reportElement style="Detail" positionType="Float" x="129" y="0" width="57" height="18" uuid="a30526f5-e662-4f60-b920-0cce6d760ab9"/>
+					<textElement verticalAlignment="Middle">
+						<font fontName="Segoe UI" size="11"/>
+					</textElement>
+					<textFieldExpression><![CDATA[$F{pemesanan_nama_ruang}]]></textFieldExpression>
+				</textField>
+				<textField isStretchWithOverflow="true">
+					<reportElement style="Detail" positionType="Float" x="395" y="0" width="88" height="18" uuid="5d4dbd13-24da-404e-9665-be3a80ec2e43"/>
+					<textElement textAlignment="Center" verticalAlignment="Middle">
+						<font fontName="Segoe UI" size="11"/>
+					</textElement>
+					<textFieldExpression><![CDATA[$F{pemesanan_notelp}]]></textFieldExpression>
+				</textField>
+				<textField isStretchWithOverflow="true">
+					<reportElement style="Detail" positionType="Float" x="309" y="0" width="86" height="18" uuid="72a20953-e018-418f-878b-10df010079dd"/>
+					<textElement verticalAlignment="Middle">
+						<font fontName="Segoe UI" size="11"/>
+					</textElement>
+					<textFieldExpression><![CDATA[$F{pemesanan_nama_penyewa}]]></textFieldExpression>
+				</textField>
+			</frame>
+		</band>
+	</detail>
+	<columnFooter>
+		<band height="241" splitType="Stretch">
+			<line>
+				<reportElement positionType="FixRelativeToBottom" x="0" y="3" width="555" height="1" uuid="fe656be4-29b4-498f-9fb5-1fb72e41cae6"/>
+				<graphicElement>
+					<pen lineWidth="0.5" lineColor="#999999"/>
+				</graphicElement>
+			</line>
+			<staticText>
+				<reportElement x="-1" y="18" width="181" height="20" uuid="d30eb4f5-b69f-4c92-96c8-0847080f0965"/>
+				<textElement>
+					<font fontName="Segoe UI" size="11" isBold="false" isItalic="true"/>
+				</textElement>
+				<text><![CDATA[*Harga sudah termasuk pajak]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="343" y="151" width="83" height="20" uuid="42d5c52b-4264-445e-b707-ee2d28eea798"/>
+				<textElement>
+					<font size="11"/>
+				</textElement>
+				<text><![CDATA[Pada Tanggal :]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="336" y="6" width="111" height="20" uuid="860129f8-661c-42c8-954b-9f35d71a154d"/>
+				<textElement>
+					<font fontName="Segoe UI" size="11" isBold="true"/>
+				</textElement>
+				<text><![CDATA[Total Uang Masuk]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="447" y="6" width="22" height="20" uuid="d8804f11-f903-47c3-bf9c-c5bdb90172b0"/>
+				<textElement>
+					<font fontName="Segoe UI" size="11" isBold="true"/>
+				</textElement>
+				<text><![CDATA[Rp:]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="343" y="124" width="83" height="20" uuid="07ef3d1d-8b00-417d-9920-1c8cbce20aa0"/>
+				<textElement>
+					<font size="11"/>
+				</textElement>
+				<text><![CDATA[Ditetapkan di  :]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="426" y="124" width="103" height="20" uuid="4452b2ba-2f2d-44df-a3e5-881e13e9fed5"/>
+				<textElement>
+					<font size="11"/>
+				</textElement>
+				<text><![CDATA[Depok]]></text>
+			</staticText>
+			<line>
+				<reportElement x="427" y="233" width="124" height="1" uuid="03b40132-fc7c-49ae-9489-0a2fc5231375"/>
+			</line>
+			<textField pattern="EEEE, dd MMMMM yyyy">
+				<reportElement x="426" y="151" width="125" height="20" uuid="6bc4dd84-e10c-4256-8165-014dd623abaf"/>
+				<textElement>
+					<font size="11"/>
+				</textElement>
+				<textFieldExpression><![CDATA[new java.util.Date()]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="469" y="6" width="87" height="20" uuid="e60e2d41-6eee-4910-bfc0-78e886e77ded"/>
+				<textElement>
+					<font fontName="Segoe UI" size="12" isBold="true"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$V{pemesanan_harga_1}]]></textFieldExpression>
+			</textField>
+		</band>
+	</columnFooter>
+	<pageFooter>
+		<band height="25" splitType="Stretch">
+			<frame>
+				<reportElement mode="Opaque" x="1" y="1" width="555" height="24" forecolor="#D0B48E" backcolor="#000000" uuid="7cb6f563-48b5-4121-b937-74f1462b5953"/>
+				<textField evaluationTime="Report">
+					<reportElement style="Column header" x="513" y="0" width="40" height="20" forecolor="#FFFFFF" uuid="7398f2f7-6f34-48ca-ab9e-55bb19203cd1"/>
+					<textElement verticalAlignment="Middle">
+						<font size="10" isBold="false"/>
+					</textElement>
+					<textFieldExpression><![CDATA[" " + $V{PAGE_NUMBER}]]></textFieldExpression>
+				</textField>
+				<textField>
+					<reportElement style="Column header" x="433" y="0" width="80" height="20" forecolor="#FFFFFF" uuid="834eb841-f0cc-4618-a9c5-e30226a34845"/>
+					<textElement textAlignment="Right" verticalAlignment="Middle">
+						<font size="10" isBold="false"/>
+					</textElement>
+					<textFieldExpression><![CDATA["Page "+$V{PAGE_NUMBER}+" of"]]></textFieldExpression>
+				</textField>
+				<textField pattern="EEEEE, dd MMMMM yyyy">
+					<reportElement style="Column header" x="2" y="1" width="197" height="20" forecolor="#FFFFFF" uuid="194815c2-1c31-4999-8291-dbf08ec2629a"/>
+					<textElement verticalAlignment="Middle">
+						<font size="10" isBold="false"/>
+					</textElement>
+					<textFieldExpression><![CDATA[new java.util.Date()]]></textFieldExpression>
+				</textField>
+			</frame>
+		</band>
+	</pageFooter>
+	<summary>
+		<band splitType="Stretch"/>
+	</summary>
+</jasperReport>

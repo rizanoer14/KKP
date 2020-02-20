@@ -2,14 +2,17 @@ package gui;
 
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.io.File;
 import java.sql.Connection;
 import java.text.SimpleDateFormat;
 import java.util.Date;
 import java.util.HashMap;
 import javax.swing.Timer;
 import koneksi.konek;
+import net.sf.jasperreports.engine.JasperCompileManager;
 import net.sf.jasperreports.engine.JasperFillManager;
 import net.sf.jasperreports.engine.JasperPrint;
+import net.sf.jasperreports.engine.JasperReport;
 import net.sf.jasperreports.view.JasperViewer;
 
 public class menu extends javax.swing.JFrame {
@@ -23,7 +26,8 @@ public class menu extends javax.swing.JFrame {
     public void setJam(){
     ActionListener taskPerformer = new ActionListener() {
 
-        public void actionPerformed(ActionEvent evt) {
+        public void actionPerformed(ActionEvent evt){
+              
         String nol_jam = "", nol_menit = "",nol_detik = "";
 
         java.util.Date dateTime = new java.util.Date();
@@ -40,7 +44,8 @@ public class menu extends javax.swing.JFrame {
         String detik = nol_detik + Integer.toString(nilai_detik);
 
         time.setText(waktu+":"+menit+":"+detik+" WIB");
-        }                             
+        
+        }              
     };
 new Timer(1000, taskPerformer).start();
 }    
@@ -76,13 +81,35 @@ new Timer(1000, taskPerformer).start();
         gedung = new javax.swing.JButton();
         jMenuBar2 = new javax.swing.JMenuBar();
         laporan = new javax.swing.JMenu();
-        Laporan = new javax.swing.JMenuItem();
+        keuangangedung = new javax.swing.JMenu();
         dewantoro = new javax.swing.JMenuItem();
         jMenu1 = new javax.swing.JMenu();
         KartiniI = new javax.swing.JMenuItem();
         KartiniII = new javax.swing.JMenuItem();
+        mawardi = new javax.swing.JMenuItem();
+        kusumo = new javax.swing.JMenuItem();
+        pandan = new javax.swing.JMenuItem();
+        puspita = new javax.swing.JMenuItem();
         AgusSalim = new javax.swing.JMenuItem();
+        sarbini = new javax.swing.JMenuItem();
         Sudirman = new javax.swing.JMenuItem();
+        keuangansaung = new javax.swing.JMenuItem();
+        keuanganpenginapan = new javax.swing.JMenuItem();
+        jMenu2 = new javax.swing.JMenu();
+        pgedung = new javax.swing.JMenu();
+        dewantoro1 = new javax.swing.JMenuItem();
+        jMenu3 = new javax.swing.JMenu();
+        KartiniI1 = new javax.swing.JMenuItem();
+        KartiniII1 = new javax.swing.JMenuItem();
+        mawardi1 = new javax.swing.JMenuItem();
+        kusumo1 = new javax.swing.JMenuItem();
+        pandan1 = new javax.swing.JMenuItem();
+        puspita1 = new javax.swing.JMenuItem();
+        AgusSalim1 = new javax.swing.JMenuItem();
+        sarbini1 = new javax.swing.JMenuItem();
+        Sudirman1 = new javax.swing.JMenuItem();
+        psaung = new javax.swing.JMenuItem();
+        ppenginapan = new javax.swing.JMenuItem();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setTitle("MENU UTAMA APLIKASI PENYEWAAN RUANG DIKLAT BERBASIS JAVA");
@@ -96,7 +123,7 @@ new Timer(1000, taskPerformer).start();
         paneldasar.setBackground(new java.awt.Color(51, 102, 0));
 
         panel.setBorder(new javax.swing.border.LineBorder(new java.awt.Color(0, 0, 0), 1, true));
-        panel.setPreferredSize(new java.awt.Dimension(595, 415));
+        panel.setPreferredSize(new java.awt.Dimension(595, 480));
 
         javax.swing.GroupLayout panelLayout = new javax.swing.GroupLayout(panel);
         panel.setLayout(panelLayout);
@@ -106,11 +133,11 @@ new Timer(1000, taskPerformer).start();
         );
         panelLayout.setVerticalGroup(
             panelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 413, Short.MAX_VALUE)
+            .addGap(0, 478, Short.MAX_VALUE)
         );
 
         panel2.setBorder(new javax.swing.border.LineBorder(new java.awt.Color(0, 0, 0), 1, true));
-        panel2.setPreferredSize(new java.awt.Dimension(595, 415));
+        panel2.setPreferredSize(new java.awt.Dimension(595, 480));
         panel2.setRequestFocusEnabled(false);
 
         javax.swing.GroupLayout panel2Layout = new javax.swing.GroupLayout(panel2);
@@ -121,7 +148,7 @@ new Timer(1000, taskPerformer).start();
         );
         panel2Layout.setVerticalGroup(
             panel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 413, Short.MAX_VALUE)
+            .addGap(0, 0, Short.MAX_VALUE)
         );
 
         jLabel1.setFont(new java.awt.Font("Segoe UI", 1, 36)); // NOI18N
@@ -201,10 +228,10 @@ new Timer(1000, taskPerformer).start();
                     .addComponent(time)
                     .addComponent(time1))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addGroup(paneldasarLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(panel, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(panel2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addContainerGap(109, Short.MAX_VALUE))
+                .addGroup(paneldasarLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                    .addComponent(panel, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(panel2, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addContainerGap(44, Short.MAX_VALUE))
         );
 
         getContentPane().add(paneldasar, new org.netbeans.lib.awtextra.AbsoluteConstraints(140, 0, 1230, 730));
@@ -238,7 +265,7 @@ new Timer(1000, taskPerformer).start();
                 jadwalActionPerformed(evt);
             }
         });
-        paneldasar2.add(jadwal, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 510, 100, 30));
+        paneldasar2.add(jadwal, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 520, 100, 30));
 
         logout.setBackground(new java.awt.Color(255, 255, 255));
         logout.setFont(new java.awt.Font("Segoe UI", 0, 12)); // NOI18N
@@ -252,7 +279,7 @@ new Timer(1000, taskPerformer).start();
                 logoutActionPerformed(evt);
             }
         });
-        paneldasar2.add(logout, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 590, 100, 30));
+        paneldasar2.add(logout, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 620, 100, 30));
 
         saung.setBackground(new java.awt.Color(255, 255, 255));
         saung.setFont(new java.awt.Font("Segoe UI", 0, 12)); // NOI18N
@@ -266,7 +293,7 @@ new Timer(1000, taskPerformer).start();
                 saungActionPerformed(evt);
             }
         });
-        paneldasar2.add(saung, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 410, 100, 30));
+        paneldasar2.add(saung, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 420, 100, 30));
 
         gedung.setBackground(new java.awt.Color(255, 255, 255));
         gedung.setFont(new java.awt.Font("Segoe UI", 0, 12)); // NOI18N
@@ -280,31 +307,44 @@ new Timer(1000, taskPerformer).start();
                 gedungActionPerformed(evt);
             }
         });
-        paneldasar2.add(gedung, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 230, 100, 30));
+        paneldasar2.add(gedung, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 220, 100, 30));
 
         getContentPane().add(paneldasar2, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 140, 730));
 
         laporan.setIcon(new javax.swing.ImageIcon(getClass().getResource("/icon/idata.png"))); // NOI18N
-        laporan.setText("Laporan");
+        laporan.setText("Laporan Keuangan");
         laporan.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
-
-        Laporan.setText("Laporan");
-        Laporan.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
-        Laporan.addActionListener(new java.awt.event.ActionListener() {
+        laporan.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                LaporanActionPerformed(evt);
+                laporanActionPerformed(evt);
             }
         });
-        laporan.add(Laporan);
+
+        keuangangedung.setText("Keuangan Gedung");
+        keuangangedung.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                keuangangedungMouseClicked(evt);
+            }
+        });
+        keuangangedung.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                keuangangedungActionPerformed(evt);
+            }
+        });
 
         dewantoro.setText("Dewantoro");
         dewantoro.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        dewantoro.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                dewantoroMouseClicked(evt);
+            }
+        });
         dewantoro.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 dewantoroActionPerformed(evt);
             }
         });
-        laporan.add(dewantoro);
+        keuangangedung.add(dewantoro);
 
         jMenu1.setText("Kartini");
         jMenu1.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
@@ -327,7 +367,43 @@ new Timer(1000, taskPerformer).start();
         });
         jMenu1.add(KartiniII);
 
-        laporan.add(jMenu1);
+        keuangangedung.add(jMenu1);
+
+        mawardi.setText("Mawardi I");
+        mawardi.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        mawardi.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                mawardiActionPerformed(evt);
+            }
+        });
+        keuangangedung.add(mawardi);
+
+        kusumo.setText("Parang Kusumo");
+        kusumo.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        kusumo.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                kusumoActionPerformed(evt);
+            }
+        });
+        keuangangedung.add(kusumo);
+
+        pandan.setText("Pandansari");
+        pandan.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        pandan.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                pandanActionPerformed(evt);
+            }
+        });
+        keuangangedung.add(pandan);
+
+        puspita.setText("Puspitasari");
+        puspita.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        puspita.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                puspitaActionPerformed(evt);
+            }
+        });
+        keuangangedung.add(puspita);
 
         AgusSalim.setText("R.H Agus Salim");
         AgusSalim.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
@@ -336,7 +412,16 @@ new Timer(1000, taskPerformer).start();
                 AgusSalimActionPerformed(evt);
             }
         });
-        laporan.add(AgusSalim);
+        keuangangedung.add(AgusSalim);
+
+        sarbini.setText("Sarbini");
+        sarbini.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        sarbini.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                sarbiniActionPerformed(evt);
+            }
+        });
+        keuangangedung.add(sarbini);
 
         Sudirman.setText("Sudirman");
         Sudirman.addActionListener(new java.awt.event.ActionListener() {
@@ -344,9 +429,157 @@ new Timer(1000, taskPerformer).start();
                 SudirmanActionPerformed(evt);
             }
         });
-        laporan.add(Sudirman);
+        keuangangedung.add(Sudirman);
+
+        laporan.add(keuangangedung);
+
+        keuangansaung.setText("Keuangan Saung");
+        keuangansaung.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        keuangansaung.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                keuangansaungActionPerformed(evt);
+            }
+        });
+        laporan.add(keuangansaung);
+
+        keuanganpenginapan.setText("Keuangan Penginapan");
+        keuanganpenginapan.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                keuanganpenginapanActionPerformed(evt);
+            }
+        });
+        laporan.add(keuanganpenginapan);
 
         jMenuBar2.add(laporan);
+
+        jMenu2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/icon/idata.png"))); // NOI18N
+        jMenu2.setText("Laporan Penyewaan");
+
+        pgedung.setText("Penyewaan Gedung");
+        pgedung.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                pgedungMouseClicked(evt);
+            }
+        });
+        pgedung.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                pgedungActionPerformed(evt);
+            }
+        });
+
+        dewantoro1.setText("Dewantoro");
+        dewantoro1.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        dewantoro1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                dewantoro1ActionPerformed(evt);
+            }
+        });
+        pgedung.add(dewantoro1);
+
+        jMenu3.setText("Kartini");
+        jMenu3.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+
+        KartiniI1.setText("Kartini I");
+        KartiniI1.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        KartiniI1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                KartiniI1ActionPerformed(evt);
+            }
+        });
+        jMenu3.add(KartiniI1);
+
+        KartiniII1.setText("Kartini II");
+        KartiniII1.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        KartiniII1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                KartiniII1ActionPerformed(evt);
+            }
+        });
+        jMenu3.add(KartiniII1);
+
+        pgedung.add(jMenu3);
+
+        mawardi1.setText("Mawardi I");
+        mawardi1.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        mawardi1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                mawardi1ActionPerformed(evt);
+            }
+        });
+        pgedung.add(mawardi1);
+
+        kusumo1.setText("Parang Kusumo");
+        kusumo1.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        kusumo1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                kusumo1ActionPerformed(evt);
+            }
+        });
+        pgedung.add(kusumo1);
+
+        pandan1.setText("Pandansari");
+        pandan1.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        pandan1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                pandan1ActionPerformed(evt);
+            }
+        });
+        pgedung.add(pandan1);
+
+        puspita1.setText("Puspitasari");
+        puspita1.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        puspita1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                puspita1ActionPerformed(evt);
+            }
+        });
+        pgedung.add(puspita1);
+
+        AgusSalim1.setText("R.H Agus Salim");
+        AgusSalim1.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        AgusSalim1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                AgusSalim1ActionPerformed(evt);
+            }
+        });
+        pgedung.add(AgusSalim1);
+
+        sarbini1.setText("Sarbini");
+        sarbini1.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        sarbini1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                sarbini1ActionPerformed(evt);
+            }
+        });
+        pgedung.add(sarbini1);
+
+        Sudirman1.setText("Sudirman");
+        Sudirman1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                Sudirman1ActionPerformed(evt);
+            }
+        });
+        pgedung.add(Sudirman1);
+
+        jMenu2.add(pgedung);
+
+        psaung.setText("Penyewaan Saung");
+        psaung.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                psaungActionPerformed(evt);
+            }
+        });
+        jMenu2.add(psaung);
+
+        ppenginapan.setText("Penyewaan Penginapan");
+        ppenginapan.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                ppenginapanActionPerformed(evt);
+            }
+        });
+        jMenu2.add(ppenginapan);
+
+        jMenuBar2.add(jMenu2);
 
         setJMenuBar(jMenuBar2);
 
@@ -354,7 +587,9 @@ new Timer(1000, taskPerformer).start();
     }// </editor-fold>//GEN-END:initComponents
 
     private void penginapanActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_penginapanActionPerformed
-      
+        daftar_penginapan m = new daftar_penginapan();
+        panel.add(m);
+        m.setVisible(true);
     }//GEN-LAST:event_penginapanActionPerformed
 
     private void jadwalActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jadwalActionPerformed
@@ -374,88 +609,6 @@ new Timer(1000, taskPerformer).start();
         setExtendedState(menu.MAXIMIZED_BOTH);
     }//GEN-LAST:event_formWindowOpened
 
-    private void LaporanActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_LaporanActionPerformed
-      periode n = new periode();
-        n.setVisible(true);
-/*try {
-            HashMap data = new HashMap();
-            String lap=("./src/laporan/Laporan.jasper");
-            JasperPrint jp = JasperFillManager.fillReport(lap, data, conn);
-            JasperViewer jv = new JasperViewer(jp, false);
-            jv.setTitle("Laporan Penyewaan Ruang Diklat");
-            jv.setVisible(true);
-        } catch (Exception e){
-            javax.swing.JOptionPane.showMessageDialog(rootPane, "Gagal Menampilkan Laporan!");
-        }
-*/
-    }//GEN-LAST:event_LaporanActionPerformed
-
-    private void AgusSalimActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_AgusSalimActionPerformed
-        try {
-            HashMap data = new HashMap();
-            String lap=("./src/laporan/Lap_Agus.jasper");
-            JasperPrint jp = JasperFillManager.fillReport(lap, data, conn);
-            JasperViewer jv = new JasperViewer(jp, false);
-            jv.setTitle("Laporan Gedung R.H.Agus Salim");
-            jv.setVisible(true);
-        } catch (Exception e){
-            javax.swing.JOptionPane.showMessageDialog(rootPane, "Gagal Menampilkan Laporan!");
-        }
-     //coba dari komputer riza
-    }//GEN-LAST:event_AgusSalimActionPerformed
-
-    private void dewantoroActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_dewantoroActionPerformed
-        try {
-            HashMap data = new HashMap();
-            String lap=("./src/laporan/Lap_Dewan.jasper");
-            JasperPrint jp = JasperFillManager.fillReport(lap, data, conn);
-            JasperViewer jv = new JasperViewer(jp, false);
-            jv.setTitle("Laporan Gedung Dewantoro");
-            jv.setVisible(true);
-        } catch (Exception e){
-            javax.swing.JOptionPane.showMessageDialog(rootPane, "Gagal Menampilkan Laporan!");
-        }
-    }//GEN-LAST:event_dewantoroActionPerformed
-
-    private void KartiniIActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_KartiniIActionPerformed
-        try {
-            HashMap data = new HashMap();
-            String lap=("./src/laporan/Lap_Kar1.jasper");
-            JasperPrint jp = JasperFillManager.fillReport(lap, data, conn);
-            JasperViewer jv = new JasperViewer(jp, false);
-            jv.setTitle("Laporan Gedung Kartini I");
-            jv.setVisible(true);
-        } catch (Exception e){
-            javax.swing.JOptionPane.showMessageDialog(rootPane, "Gagal Menampilkan Laporan!");
-        }
-    }//GEN-LAST:event_KartiniIActionPerformed
-
-    private void KartiniIIActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_KartiniIIActionPerformed
-        try {
-            HashMap data = new HashMap();
-            String lap=("./src/laporan/Lap_Kar2.jasper");
-            JasperPrint jp = JasperFillManager.fillReport(lap, data, conn);
-            JasperViewer jv = new JasperViewer(jp, false);
-            jv.setTitle("Laporan Gedung Kartini II");
-            jv.setVisible(true);
-        } catch (Exception e){
-            javax.swing.JOptionPane.showMessageDialog(rootPane, "Gagal Menampilkan Laporan!");
-        }
-    }//GEN-LAST:event_KartiniIIActionPerformed
-
-    private void SudirmanActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_SudirmanActionPerformed
-        try {
-            HashMap data = new HashMap();
-            String lap=("./src/laporan/Lap_Sudir.jasper");
-            JasperPrint jp = JasperFillManager.fillReport(lap, data, conn);
-            JasperViewer jv = new JasperViewer(jp, false);
-            jv.setTitle("Laporan Gedung Sudirman");
-            jv.setVisible(true);
-        } catch (Exception e){
-            javax.swing.JOptionPane.showMessageDialog(rootPane, "Gagal Menampilkan Laporan!");
-        }
-    }//GEN-LAST:event_SudirmanActionPerformed
-
     private void saungActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_saungActionPerformed
         daftar_saung m = new daftar_saung();
         panel.add(m);
@@ -468,9 +621,194 @@ new Timer(1000, taskPerformer).start();
         n.setVisible(true);
     }//GEN-LAST:event_gedungActionPerformed
 
-    /**
-     * @param args the command line arguments
-     */
+    private void SudirmanActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_SudirmanActionPerformed
+        try {
+            HashMap data = new HashMap();
+            String lap=("./src/laporan/KSudir.jasper");
+            JasperPrint jp = JasperFillManager.fillReport(lap, data, conn);
+            JasperViewer jv = new JasperViewer(jp, false);
+            jv.setTitle("Laporan Gedung Sudirman");
+            jv.setVisible(true);
+        } catch (Exception e){
+            javax.swing.JOptionPane.showMessageDialog(rootPane, "Gagal Menampilkan Laporan!");
+        }
+    }//GEN-LAST:event_SudirmanActionPerformed
+
+    private void AgusSalimActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_AgusSalimActionPerformed
+        try {
+            HashMap data = new HashMap();
+            String lap=("./src/laporan/KAgus.jasper");
+            JasperPrint jp = JasperFillManager.fillReport(lap, data, conn);
+            JasperViewer jv = new JasperViewer(jp, false);
+            jv.setTitle("Laporan Gedung R.H.Agus Salim");
+            jv.setVisible(true);
+        } catch (Exception e){
+            javax.swing.JOptionPane.showMessageDialog(rootPane, "Gagal Menampilkan Laporan!");
+        }
+        //coba dari komputer riza
+    }//GEN-LAST:event_AgusSalimActionPerformed
+
+    private void KartiniIIActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_KartiniIIActionPerformed
+        try {
+            HashMap data = new HashMap();
+            String lap=("./src/laporan/KKar2.jasper");
+            JasperPrint jp = JasperFillManager.fillReport(lap, data, conn);
+            JasperViewer jv = new JasperViewer(jp, false);
+            jv.setTitle("Laporan Gedung Kartini II");
+            jv.setVisible(true);
+        } catch (Exception e){
+            javax.swing.JOptionPane.showMessageDialog(rootPane, "Gagal Menampilkan Laporan!");
+        }
+    }//GEN-LAST:event_KartiniIIActionPerformed
+
+    private void KartiniIActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_KartiniIActionPerformed
+        try {
+            HashMap data = new HashMap();
+            String lap=("./src/laporan/KKar1.jasper");
+            JasperPrint jp = JasperFillManager.fillReport(lap, data, conn);
+            JasperViewer jv = new JasperViewer(jp, false);
+            jv.setTitle("Laporan Gedung Kartini I");
+            jv.setVisible(true);
+        } catch (Exception e){
+            javax.swing.JOptionPane.showMessageDialog(rootPane, "Gagal Menampilkan Laporan!");
+        }
+    }//GEN-LAST:event_KartiniIActionPerformed
+
+    private void dewantoroActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_dewantoroActionPerformed
+        try {
+            HashMap param = new HashMap();
+            File f = new File("C:\\Users\\Hp\\Documents\\NetBeansProjects\\KKP\\KKP\\src\\laporan\\KDewan.jrxml");
+            JasperReport j = JasperCompileManager.compileReport(f.getAbsolutePath());
+            JasperPrint jasperPrint = JasperFillManager.fillReport(j, param, conn);
+            JasperViewer jv = new JasperViewer(jasperPrint, false);
+            jv.setTitle("Laporan Keuangan Penyewaan Gedung Pertemuan");
+            jv.setVisible(true);
+            dispose();
+        }
+        catch(Exception e) {
+            javax.swing.JOptionPane.showMessageDialog(rootPane, "Gagal Menampilkan Laporan"+e);
+        }
+    }//GEN-LAST:event_dewantoroActionPerformed
+
+    private void keuangansaungActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_keuangansaungActionPerformed
+        periode_saung n = new periode_saung();
+        n.setVisible(true);
+        /*try {
+            HashMap data = new HashMap();
+            String lap=("./src/laporan/keuangan_saung.jasper");
+            JasperPrint jp = JasperFillManager.fillReport(lap, data, conn);
+            JasperViewer jv = new JasperViewer(jp, false);
+            jv.setTitle("Laporan Penyewaan Ruang Diklat");
+            jv.setVisible(true);
+        } catch (Exception e){
+            javax.swing.JOptionPane.showMessageDialog(rootPane, "Gagal Menampilkan Laporan!");
+        }
+        */
+    }//GEN-LAST:event_keuangansaungActionPerformed
+
+    private void keuangangedungActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_keuangangedungActionPerformed
+        periode_gedung n = new periode_gedung();
+        n.setVisible(true);
+    }//GEN-LAST:event_keuangangedungActionPerformed
+
+    private void keuanganpenginapanActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_keuanganpenginapanActionPerformed
+        periode_penginapan n = new periode_penginapan();
+        n.setVisible(true);
+    }//GEN-LAST:event_keuanganpenginapanActionPerformed
+
+    private void laporanActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_laporanActionPerformed
+    
+    }//GEN-LAST:event_laporanActionPerformed
+
+    private void psaungActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_psaungActionPerformed
+        psewa_saung n = new psewa_saung();
+        n.setVisible(true);
+    }//GEN-LAST:event_psaungActionPerformed
+
+    private void pgedungActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_pgedungActionPerformed
+        psewa_gedung n = new psewa_gedung();
+        n.setVisible(true);
+    }//GEN-LAST:event_pgedungActionPerformed
+
+    private void kusumoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_kusumoActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_kusumoActionPerformed
+
+    private void pandanActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_pandanActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_pandanActionPerformed
+
+    private void puspitaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_puspitaActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_puspitaActionPerformed
+
+    private void mawardiActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_mawardiActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_mawardiActionPerformed
+
+    private void sarbiniActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_sarbiniActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_sarbiniActionPerformed
+
+    private void ppenginapanActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ppenginapanActionPerformed
+        psewa_penginapan n = new psewa_penginapan();
+        n.setVisible(true);
+    }//GEN-LAST:event_ppenginapanActionPerformed
+
+    private void pgedungMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_pgedungMouseClicked
+        psewa_gedung n = new psewa_gedung();
+        n.setVisible(true);
+    }//GEN-LAST:event_pgedungMouseClicked
+
+    private void keuangangedungMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_keuangangedungMouseClicked
+        periode_gedung n = new periode_gedung();
+        n.setVisible(true);
+    }//GEN-LAST:event_keuangangedungMouseClicked
+
+    private void dewantoro1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_dewantoro1ActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_dewantoro1ActionPerformed
+
+    private void KartiniI1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_KartiniI1ActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_KartiniI1ActionPerformed
+
+    private void KartiniII1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_KartiniII1ActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_KartiniII1ActionPerformed
+
+    private void mawardi1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_mawardi1ActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_mawardi1ActionPerformed
+
+    private void kusumo1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_kusumo1ActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_kusumo1ActionPerformed
+
+    private void pandan1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_pandan1ActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_pandan1ActionPerformed
+
+    private void puspita1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_puspita1ActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_puspita1ActionPerformed
+
+    private void AgusSalim1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_AgusSalim1ActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_AgusSalim1ActionPerformed
+
+    private void sarbini1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_sarbini1ActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_sarbini1ActionPerformed
+
+    private void Sudirman1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_Sudirman1ActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_Sudirman1ActionPerformed
+
+    private void dewantoroMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_dewantoroMouseClicked
+         
+    }//GEN-LAST:event_dewantoroMouseClicked
+
     public static void main(String args[]) {
         /* Set the Nimbus look and feel */
         //<editor-fold defaultstate="collapsed" desc=" Look and feel setting code (optional) ">
@@ -508,25 +846,47 @@ new Timer(1000, taskPerformer).start();
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JMenuItem AgusSalim;
+    private javax.swing.JMenuItem AgusSalim1;
     private javax.swing.JMenuItem KartiniI;
+    private javax.swing.JMenuItem KartiniI1;
     private javax.swing.JMenuItem KartiniII;
-    private javax.swing.JMenuItem Laporan;
+    private javax.swing.JMenuItem KartiniII1;
     private javax.swing.JMenuItem Sudirman;
+    private javax.swing.JMenuItem Sudirman1;
     private javax.swing.JMenuItem dewantoro;
+    private javax.swing.JMenuItem dewantoro1;
     private javax.swing.JButton gedung;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JMenu jMenu1;
+    private javax.swing.JMenu jMenu2;
+    private javax.swing.JMenu jMenu3;
     private javax.swing.JMenuBar jMenuBar2;
     private javax.swing.JButton jadwal;
+    private javax.swing.JMenu keuangangedung;
+    private javax.swing.JMenuItem keuanganpenginapan;
+    private javax.swing.JMenuItem keuangansaung;
+    private javax.swing.JMenuItem kusumo;
+    private javax.swing.JMenuItem kusumo1;
     private javax.swing.JMenu laporan;
     private javax.swing.JButton logout;
+    private javax.swing.JMenuItem mawardi;
+    private javax.swing.JMenuItem mawardi1;
+    private javax.swing.JMenuItem pandan;
+    private javax.swing.JMenuItem pandan1;
     private javax.swing.JPanel panel;
     private javax.swing.JPanel panel2;
     private javax.swing.JPanel paneldasar;
     private javax.swing.JPanel paneldasar2;
     private javax.swing.JButton penginapan;
+    private javax.swing.JMenu pgedung;
+    private javax.swing.JMenuItem ppenginapan;
+    private javax.swing.JMenuItem psaung;
+    private javax.swing.JMenuItem puspita;
+    private javax.swing.JMenuItem puspita1;
+    private javax.swing.JMenuItem sarbini;
+    private javax.swing.JMenuItem sarbini1;
     private javax.swing.JButton saung;
     private javax.swing.JLabel tanggal;
     private javax.swing.JLabel tanggal1;

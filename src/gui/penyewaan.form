@@ -47,43 +47,37 @@
                   <EmptySpace min="-2" pref="18" max="-2" attributes="0"/>
                   <Group type="103" groupAlignment="0" attributes="0">
                       <Group type="102" alignment="0" attributes="0">
-                          <Group type="103" groupAlignment="0" attributes="0">
-                              <Component id="nama3" alignment="0" min="-2" max="-2" attributes="0"/>
-                              <Component id="Harga" alignment="0" min="-2" max="-2" attributes="0"/>
+                          <Group type="103" groupAlignment="0" max="-2" attributes="0">
+                              <Component id="Harga" pref="97" max="32767" attributes="0"/>
+                              <Component id="nama3" max="32767" attributes="0"/>
                           </Group>
-                          <EmptySpace min="-2" pref="29" max="-2" attributes="0"/>
+                          <EmptySpace max="-2" attributes="0"/>
                           <Group type="103" groupAlignment="0" attributes="0">
                               <Component id="tgl" min="-2" pref="130" max="-2" attributes="0"/>
                               <Component id="kdsewa" min="-2" pref="68" max="-2" attributes="0"/>
                           </Group>
                       </Group>
                       <Component id="cekgedung" min="-2" max="-2" attributes="0"/>
-                      <Group type="103" groupAlignment="0" attributes="0">
-                          <Group type="102" alignment="0" attributes="0">
-                              <Group type="103" groupAlignment="0" attributes="0">
-                                  <Component id="nama4" alignment="0" min="-2" max="-2" attributes="0"/>
-                                  <Component id="nama1" alignment="0" min="-2" max="-2" attributes="0"/>
-                              </Group>
-                              <EmptySpace min="-2" pref="24" max="-2" attributes="0"/>
-                              <Group type="103" groupAlignment="0" attributes="0">
-                                  <Component id="kdgedung" min="-2" pref="114" max="-2" attributes="0"/>
-                                  <Component id="nama_gedung" min="-2" pref="114" max="-2" attributes="0"/>
+                      <Group type="102" attributes="0">
+                          <Component id="Lokasi" min="-2" pref="97" max="-2" attributes="0"/>
+                          <EmptySpace max="-2" attributes="0"/>
+                          <Component id="siang" min="-2" max="-2" attributes="0"/>
+                          <EmptySpace min="-2" pref="4" max="-2" attributes="0"/>
+                          <Component id="malam" min="-2" max="-2" attributes="0"/>
+                      </Group>
+                      <Group type="102" alignment="0" attributes="0">
+                          <Group type="103" groupAlignment="1" attributes="0">
+                              <Component id="Harga1" min="-2" pref="97" max="-2" attributes="0"/>
+                              <Group type="103" groupAlignment="0" max="-2" attributes="0">
+                                  <Component id="nama1" pref="97" max="32767" attributes="0"/>
+                                  <Component id="nama4" max="32767" attributes="0"/>
                               </Group>
                           </Group>
-                          <Group type="102" alignment="1" attributes="0">
-                              <Group type="103" groupAlignment="0" attributes="0">
-                                  <Component id="Lokasi" min="-2" max="-2" attributes="0"/>
-                                  <Component id="Harga1" min="-2" max="-2" attributes="0"/>
-                              </Group>
-                              <EmptySpace min="-2" pref="39" max="-2" attributes="0"/>
-                              <Group type="103" groupAlignment="0" attributes="0">
-                                  <Group type="102" attributes="0">
-                                      <Component id="siang" min="-2" max="-2" attributes="0"/>
-                                      <EmptySpace min="-2" pref="10" max="-2" attributes="0"/>
-                                      <Component id="malam" min="-2" max="-2" attributes="0"/>
-                                  </Group>
-                                  <Component id="harga" min="-2" pref="104" max="-2" attributes="0"/>
-                              </Group>
+                          <EmptySpace max="-2" attributes="0"/>
+                          <Group type="103" groupAlignment="0" attributes="0">
+                              <Component id="harga" min="-2" pref="104" max="-2" attributes="0"/>
+                              <Component id="kdgedung" min="-2" pref="114" max="-2" attributes="0"/>
+                              <Component id="nama_gedung" min="-2" pref="114" max="-2" attributes="0"/>
                           </Group>
                       </Group>
                   </Group>
@@ -97,19 +91,20 @@
                       </Group>
                       <Group type="103" alignment="1" groupAlignment="0" attributes="0">
                           <Group type="102" attributes="0">
-                              <Component id="nama5" min="-2" max="-2" attributes="0"/>
-                              <EmptySpace max="32767" attributes="0"/>
+                              <Component id="nama5" max="32767" attributes="0"/>
+                              <EmptySpace type="unrelated" max="-2" attributes="0"/>
                               <Component id="kdpenyewa" min="-2" pref="68" max="-2" attributes="0"/>
-                              <EmptySpace min="-2" pref="73" max="-2" attributes="0"/>
+                              <EmptySpace min="-2" pref="67" max="-2" attributes="0"/>
                           </Group>
                           <Group type="102" alignment="0" attributes="0">
-                              <Group type="103" groupAlignment="0" attributes="0">
-                                  <Component id="nama2" min="-2" max="-2" attributes="0"/>
-                                  <Component id="Lokasi1" min="-2" max="-2" attributes="0"/>
-                                  <Component id="Lokasi2" min="-2" max="-2" attributes="0"/>
+                              <Group type="103" groupAlignment="1" max="-2" attributes="0">
+                                  <Component id="Lokasi1" max="32767" attributes="0"/>
+                                  <Component id="nama2" pref="96" max="32767" attributes="0"/>
+                                  <Component id="Lokasi2" max="32767" attributes="0"/>
                               </Group>
-                              <EmptySpace type="separate" max="-2" attributes="0"/>
+                              <EmptySpace min="-2" pref="4" max="-2" attributes="0"/>
                               <Group type="103" groupAlignment="0" attributes="0">
+                                  <Component id="time" max="32767" attributes="0"/>
                                   <Component id="notelp" alignment="1" max="32767" attributes="0"/>
                                   <Component id="nm_penyewa" alignment="0" max="32767" attributes="0"/>
                                   <Component id="bayar" alignment="1" max="32767" attributes="0"/>
@@ -147,6 +142,8 @@
                               <Component id="Lokasi2" alignment="3" min="-2" max="-2" attributes="0"/>
                               <Component id="bayar" alignment="3" min="-2" max="-2" attributes="0"/>
                           </Group>
+                          <EmptySpace max="-2" attributes="0"/>
+                          <Component id="time" min="-2" max="-2" attributes="0"/>
                           <EmptySpace max="32767" attributes="0"/>
                           <Group type="103" groupAlignment="3" attributes="0">
                               <Component id="batal" linkSize="1" alignment="3" min="-2" max="-2" attributes="0"/>
@@ -180,14 +177,12 @@
                               <Component id="Harga1" alignment="3" min="-2" max="-2" attributes="0"/>
                           </Group>
                           <EmptySpace max="-2" attributes="0"/>
-                          <Group type="103" groupAlignment="0" attributes="0">
-                              <Group type="103" alignment="0" groupAlignment="3" attributes="0">
-                                  <Component id="siang" alignment="3" min="-2" max="-2" attributes="0"/>
-                                  <Component id="malam" alignment="3" min="-2" max="-2" attributes="0"/>
-                              </Group>
-                              <Component id="Lokasi" min="-2" max="-2" attributes="0"/>
+                          <Group type="103" groupAlignment="3" attributes="0">
+                              <Component id="siang" alignment="3" min="-2" max="-2" attributes="0"/>
+                              <Component id="malam" alignment="3" min="-2" max="-2" attributes="0"/>
+                              <Component id="Lokasi" alignment="3" min="-2" max="-2" attributes="0"/>
                           </Group>
-                          <EmptySpace min="0" pref="51" max="32767" attributes="0"/>
+                          <EmptySpace min="0" pref="55" max="32767" attributes="0"/>
                       </Group>
                   </Group>
                   <EmptySpace max="-2" attributes="0"/>
@@ -202,7 +197,7 @@
               <Font name="Segoe UI" size="24" style="0"/>
             </Property>
             <Property name="horizontalAlignment" type="int" value="0"/>
-            <Property name="text" type="java.lang.String" value="Form Data Penyewaan Ruang Diklat"/>
+            <Property name="text" type="java.lang.String" value="Form Penyewaan "/>
           </Properties>
         </Component>
         <Component class="javax.swing.JLabel" name="nama3">
@@ -311,7 +306,6 @@
           </Properties>
           <Events>
             <EventHandler event="inputMethodTextChanged" listener="java.awt.event.InputMethodListener" parameters="java.awt.event.InputMethodEvent" handler="tglInputMethodTextChanged"/>
-            <EventHandler event="propertyChange" listener="java.beans.PropertyChangeListener" parameters="java.beans.PropertyChangeEvent" handler="tglPropertyChange"/>
           </Events>
         </Component>
         <Component class="javax.swing.JLabel" name="Lokasi1">
@@ -434,6 +428,8 @@
               <Font name="Segoe UI" size="12" style="0"/>
             </Property>
           </Properties>
+        </Component>
+        <Component class="javax.swing.JTextField" name="time">
         </Component>
       </SubComponents>
     </Container>

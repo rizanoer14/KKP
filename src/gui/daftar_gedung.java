@@ -31,7 +31,7 @@ public class daftar_gedung extends javax.swing.JInternalFrame {
         setMaximizable(true);
         setTitle("DAFTAR GEDUNG");
         setName(""); // NOI18N
-        setPreferredSize(new java.awt.Dimension(595, 415));
+        setPreferredSize(new java.awt.Dimension(595, 480));
         setRequestFocusEnabled(false);
 
         jScrollPane1.setHorizontalScrollBarPolicy(javax.swing.ScrollPaneConstants.HORIZONTAL_SCROLLBAR_NEVER);
@@ -39,13 +39,13 @@ public class daftar_gedung extends javax.swing.JInternalFrame {
         panel2.setBackground(new java.awt.Color(255, 255, 255));
         panel2.setPreferredSize(new java.awt.Dimension(580, 900));
 
-        jLabel3.setFont(new java.awt.Font("Segoe UI", 0, 24)); // NOI18N
+        jLabel3.setFont(new java.awt.Font("Segoe UI", 1, 24)); // NOI18N
         jLabel3.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         jLabel3.setText("Daftar Gedung Pertemuan");
 
         kartini2.setFont(new java.awt.Font("Segoe UI", 1, 13)); // NOI18N
         kartini2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/image/kar2.jpg"))); // NOI18N
-        kartini2.setText("Kartini");
+        kartini2.setText("Kartini I/II");
         kartini2.setVerticalAlignment(javax.swing.SwingConstants.BOTTOM);
         kartini2.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         kartini2.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
@@ -222,7 +222,7 @@ public class daftar_gedung extends javax.swing.JInternalFrame {
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(layout.createSequentialGroup()
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
                 .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(0, 0, Short.MAX_VALUE))
         );
@@ -231,39 +231,39 @@ public class daftar_gedung extends javax.swing.JInternalFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void dewantoroMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_dewantoroMouseClicked
-        new detail_dewantoro().show();
+        new dg_dewan().show();
     }//GEN-LAST:event_dewantoroMouseClicked
 
     private void agusMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_agusMouseClicked
-        new detail_agus().show();
+        new dg_agus().show();
     }//GEN-LAST:event_agusMouseClicked
 
     private void sudirmanMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_sudirmanMouseClicked
-        new detail_sudirman().show();
+        new dg_sudirman().show();
     }//GEN-LAST:event_sudirmanMouseClicked
 
     private void kartiniMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_kartiniMouseClicked
-        new detail_kartini().show();
+        new dg_kartini().show();
     }//GEN-LAST:event_kartiniMouseClicked
 
     private void puspitasudirmanMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_puspitasudirmanMouseClicked
-        new detail_puspi().show();
+        new dg_puspi().show();
     }//GEN-LAST:event_puspitasudirmanMouseClicked
 
     private void pandanagusMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_pandanagusMouseClicked
-         new detail_pandan().show();
+         new dg_pandan().show();
     }//GEN-LAST:event_pandanagusMouseClicked
 
     private void sarbinikartiniMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_sarbinikartiniMouseClicked
-        new detail_sarbini().show();
+        new dg_sarbini().show();
     }//GEN-LAST:event_sarbinikartiniMouseClicked
 
     private void mawardewantoroMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_mawardewantoroMouseClicked
-        new detail_mawar().show();
+        new dg_mawar().show();
     }//GEN-LAST:event_mawardewantoroMouseClicked
 
     private void parangdewantoroMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_parangdewantoroMouseClicked
-        new detail_kusumo().show();
+        new dg_kusumo().show();
     }//GEN-LAST:event_parangdewantoroMouseClicked
 
 
