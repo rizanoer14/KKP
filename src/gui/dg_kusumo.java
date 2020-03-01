@@ -22,6 +22,7 @@ public class dg_kusumo extends javax.swing.JFrame {
                 a[x] = hasil.getString("kode_ruang");
                 b[x] = hasil.getString("nama_ruang");
                 c[x] = hasil.getString("harga");
+                x++;
             }
          }catch (SQLException e) {
             JOptionPane.showMessageDialog(null, e);
@@ -205,6 +206,12 @@ public class dg_kusumo extends javax.swing.JFrame {
         } catch (javax.swing.UnsupportedLookAndFeelException ex) {
             java.util.logging.Logger.getLogger(dg_kusumo.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         }
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
         //</editor-fold>
         //</editor-fold>
 

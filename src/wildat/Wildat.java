@@ -1,13 +1,11 @@
 package wildat;
 
-/**
- *
- * @author Available
- */
+import gui.menu;
+
 public class Wildat {
 
     public static void main(String[] args) {
-        // TODO code application logic here
+          new menu().setVisible(true);
     }
     
 }

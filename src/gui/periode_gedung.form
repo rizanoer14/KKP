@@ -98,7 +98,7 @@
               <Font name="Segoe UI" size="12" style="1"/>
             </Property>
             <Property name="horizontalAlignment" type="int" value="0"/>
-            <Property name="text" type="java.lang.String" value="Periode Cetak Laporan Penyewaan Ruang Diklat"/>
+            <Property name="text" type="java.lang.String" value="Periode Cetak Laporan Keuangan Ruang Diklat"/>
           </Properties>
         </Component>
         <Component class="javax.swing.JLabel" name="jLabel2">
