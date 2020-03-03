@@ -1,5 +1,6 @@
 package gui;
 
+import java.io.File;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
@@ -7,19 +8,26 @@ import java.sql.SQLException;
 import java.sql.Statement;
 import java.text.SimpleDateFormat;
 import java.util.Date;
+import java.util.HashMap;
+import java.util.Map;
 import javax.swing.JOptionPane;
 import javax.swing.table.DefaultTableModel;
 import koneksi.konek;
+import net.sf.jasperreports.engine.JasperCompileManager;
+import net.sf.jasperreports.engine.JasperFillManager;
+import net.sf.jasperreports.engine.JasperPrint;
+import net.sf.jasperreports.engine.JasperReport;
+import net.sf.jasperreports.view.JasperViewer;
 
 public class jadwal extends javax.swing.JInternalFrame {
 private Connection conn = new konek().connect();
 private DefaultTableModel tabmode;
- 
+
  protected void datatable(){
         Object[] Baris = {"Kode Sewa","Tanggal","Nama Gedung","Waktu","Pelanggan","Harga","Bayar","Status"};
         tabmode = new DefaultTableModel(null, Baris);
         tabeljadwal.setModel(tabmode);
-        String sql = "select * from pemesanan order by tanggal asc";
+        String sql = "SELECT * from pemesanan INNER JOIN detail ON pemesanan.kode_sewa = detail.kode_sewa";
         
         try {
             Statement stat = conn.createStatement();
@@ -30,13 +38,15 @@ private DefaultTableModel tabmode;
                 String c = hasil.getString("nama_ruang");
                 String d = hasil.getString("waktu");
                 String e = hasil.getString("nama_penyewa");
-                String h = hasil.getString("harga");
-                String f = hasil.getString("bayar");
-                String g = hasil.getString("status");
+                String h = hasil.getString("gdgfas");
+                String f = hasil.getString("total");
+                String g = hasil.getString("ket");
+
                 
-                                
                 String[] data={a,b,c,d,e,h,f,g};
                 tabmode.addRow(data);
+                
+                
             }
         }catch (SQLException e) {
             JOptionPane.showMessageDialog(null, e);
@@ -47,7 +57,8 @@ private DefaultTableModel tabmode;
        Object[] Baris = {"Kode Sewa","Tanggal","Nama Gedung","Waktu","Pelanggan","Harga","Bayar","Status"};
            tabmode = new DefaultTableModel(null, Baris);
            tabeljadwal.setModel(tabmode);
-           String sql = "SELECT * FROM pemesanan WHERE tanggal or nama_penyewa like '%"+isicari.getText()+"%'";
+           String sql = "SELECT * FROM pemesanan INNER JOIN detail ON pemesanan.kode_sewa = detail.kode_sewa"
+                   + "WHERE tanggal or nama_penyewa like '%"+isicari.getText()+"%'";
            try {
                Statement stat = conn.createStatement();
                ResultSet hasil = stat.executeQuery(sql);
@@ -57,9 +68,9 @@ private DefaultTableModel tabmode;
                 String c = hasil.getString("nama_ruang");
                 String d = hasil.getString("waktu");
                 String e = hasil.getString("nama_penyewa");
-                String h = hasil.getString("harga");
-                String f = hasil.getString("bayar");
-                String g = hasil.getString("status");
+                String h = hasil.getString("gdgfas");
+                String f = hasil.getString("total");
+                String g = hasil.getString("ket");
 
                    String[] data={a,b,c,d,e,h,f,g};
                    tabmode.addRow(data);
@@ -73,7 +84,8 @@ private DefaultTableModel tabmode;
        Object[] Baris = {"Kode Sewa","Tanggal","Nama Gedung","Waktu","Pelanggan","Harga","Bayar","Status"};
            tabmode = new DefaultTableModel(null, Baris);
            tabeljadwal.setModel(tabmode);
-           String sql = "select * from pemesanan where tanggal like '%"+isicari.getText()+"%' "+
+           String sql = "select * from pemesanan INNER JOIN detail ON pemesanan.kode_sewa = detail.kode_sewa"
+                   + "where tanggal like '%"+isicari.getText()+"%' "+
                    "or nama_penyewa like '%"+isicari.getText()+"%'"+
                    "or status like '%"+isicari.getText()+"%'"+
                    "or nama_ruang like '%"+isicari.getText()+"%'";
@@ -86,9 +98,9 @@ private DefaultTableModel tabmode;
                 String c = hasil.getString("nama_ruang");
                 String d = hasil.getString("waktu");
                 String e = hasil.getString("nama_penyewa");
-                String h = hasil.getString("harga");
-                String f = hasil.getString("bayar");
-                String g = hasil.getString("status");
+                String h = hasil.getString("gdgfas");
+                String f = hasil.getString("total");
+                String g = hasil.getString("ket");
                 String[] data={a,b,c,d,e,h,f,g};
                 tabmode.addRow(data);
                }
@@ -100,7 +112,8 @@ private DefaultTableModel tabmode;
  private void hapus(){
         int ok = JOptionPane.showConfirmDialog(null,"Hapus data penyewaan dari pelanggan: "+penyewa.getText()+"?","Konfirmasi Dialog", JOptionPane.YES_NO_OPTION);
         if (ok==0){
-            String sql ="delete from pemesanan where kode_sewa= '"+kdsewa.getText()+"' ";
+            String sql ="delete from pemesanan INNER JOIN detail ON pemesanan.kode_sewa=detail.kode_sewa"
+                    + " where kode_sewa= '"+kdsewa.getText()+"' ";
             try {
                 PreparedStatement stat = conn.prepareStatement(sql);
                 stat.executeUpdate();
@@ -154,6 +167,9 @@ private DefaultTableModel tabmode;
         kurang = new javax.swing.JTextField();
         jScrollPane4 = new javax.swing.JScrollPane();
         tabeljadwal = new javax.swing.JTable();
+        jButton1 = new javax.swing.JButton();
+        ged = new javax.swing.JLabel();
+        fas = new javax.swing.JLabel();
 
         setBackground(new java.awt.Color(255, 255, 255));
         setBorder(null);
@@ -221,6 +237,11 @@ private DefaultTableModel tabmode;
         jPanel2.add(batalsewa, new org.netbeans.lib.awtextra.AbsoluteConstraints(460, 390, 110, 30));
 
         bayar.setFont(new java.awt.Font("Segoe UI", 0, 12)); // NOI18N
+        bayar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                bayarActionPerformed(evt);
+            }
+        });
         bayar.addKeyListener(new java.awt.event.KeyAdapter() {
             public void keyPressed(java.awt.event.KeyEvent evt) {
                 bayarKeyPressed(evt);
@@ -278,6 +299,20 @@ private DefaultTableModel tabmode;
 
         jPanel2.add(jScrollPane4, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 160, 560, 200));
 
+        jButton1.setText("Cetak");
+        jButton1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton1ActionPerformed(evt);
+            }
+        });
+        jPanel2.add(jButton1, new org.netbeans.lib.awtextra.AbsoluteConstraints(270, 390, -1, -1));
+
+        ged.setText("jLabel5");
+        jPanel2.add(ged, new org.netbeans.lib.awtextra.AbsoluteConstraints(360, 70, -1, -1));
+
+        fas.setText("jLabel5");
+        jPanel2.add(fas, new org.netbeans.lib.awtextra.AbsoluteConstraints(410, 70, -1, -1));
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
@@ -301,7 +336,8 @@ private DefaultTableModel tabmode;
         Object[] Baris = {"Kode Sewa","Tanggal","Nama Gedung","Waktu","Penyewa","Harga","Bayar","Status"};
            tabmode = new DefaultTableModel(null, Baris);
            tabeljadwal.setModel(tabmode);
-           String sql = "select * from pemesanan where tanggal BETWEEN '"+from+"' AND '"+to+"' "
+           String sql = "select * from pemesanan INNER JOIN detail ON pemesanan.kode_sewa"
+                   + "=detail.kode_sewa where tanggal BETWEEN '"+from+"' AND '"+to+"' "
                    + "ORDER BY tanggal ASC";
            try {
                
@@ -313,9 +349,9 @@ private DefaultTableModel tabmode;
                 String c = hasil.getString("nama_ruang");
                 String d = hasil.getString("waktu");
                 String e = hasil.getString("nama_penyewa");
-                String h = hasil.getString("harga");
-                String f = hasil.getString("bayar");
-                String g = hasil.getString("status");
+                String h = hasil.getString("gdgfas");
+                String f = hasil.getString("total");
+                String g = hasil.getString("ket");
 
                    String[] data={a,b,c,d,e,h,f,g};
                    tabmode.addRow(data);
@@ -371,8 +407,13 @@ private DefaultTableModel tabmode;
     private void bayarKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_bayarKeyPressed
         if(evt.getKeyCode() == evt.VK_ENTER){
            try{
-               String sql="update pemesanan set bayar=?,status=? where kode_sewa='"+kdsewa.getText()+"'";  
+               String sql="update detail set total=?,status=? where kode_sewa='"+kdsewa.getText()+"'";
+               String sqli="update pemesanan set bayar=?,status=? where kode_sewa='"+kdsewa.getText()+"'";
+               String sqly="update pesan_fas set subtot=? where kode_sewa='"+kdsewa.getText()+"'";
                 PreparedStatement p=(PreparedStatement)conn.prepareStatement(sql);
+                PreparedStatement p1=(PreparedStatement)conn.prepareStatement(sqli);
+                PreparedStatement p2=(PreparedStatement)conn.prepareStatement(sqly);
+                
                 String terpilih;
                 String a = bayar1.getText();
                 String b = bayar2.getText();
@@ -392,7 +433,12 @@ private DefaultTableModel tabmode;
                 
                 p.setString(1,x);
                 p.setString(2,terpilih);
+                p1.setString(1,ged.getText());
+                p1.setString(2,terpilih);
+                p2.setString(1,fas.getText());
                 p.executeUpdate();
+                p1.executeUpdate();
+                p2.executeUpdate();
                 JOptionPane.showMessageDialog(this,"Data Telah Tersimpan");
             }catch(SQLException e){ 
                  System.out.println(e);  
@@ -402,13 +448,42 @@ private DefaultTableModel tabmode;
         }
     }//GEN-LAST:event_bayarKeyPressed
 
+    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
+        Map param = new HashMap();
+        SimpleDateFormat frmt = new SimpleDateFormat("yyyy-MM-dd");
+        String date1;
+        
+        date1 = frmt.format(kdsewa.getText());
+        param.put("kd", date1);
+        try {
+       //   File f = new File("D:/KKP/wildat/src/laporan/Laporan.jrxml");
+            File f = new File("C:\\Users\\Hp\\Documents\\NetBeansProjects\\KKP\\KKP\\src\\struk\\dp.jrxml");
+            JasperReport j = JasperCompileManager.compileReport(f.getAbsolutePath());
+            JasperPrint jasperPrint = JasperFillManager.fillReport(j, param, conn);
+            JasperViewer jv = new JasperViewer(jasperPrint, false);
+            jv.setTitle("Uang Muka");
+            jv.setVisible(true);
+            //dispose();
+        }
+        catch(Exception e) {
+            javax.swing.JOptionPane.showMessageDialog(rootPane, "Gagal Menampilkan Laporan"+e);
+        }
+    }//GEN-LAST:event_jButton1ActionPerformed
+
+    private void bayarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_bayarActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_bayarActionPerformed
+
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton batalsewa;
     private javax.swing.JTextField bayar;
     private javax.swing.JTextField bayar1;
     private javax.swing.JTextField bayar2;
     private javax.swing.JButton caritgl;
+    private javax.swing.JLabel fas;
+    private javax.swing.JLabel ged;
     private javax.swing.JTextField isicari;
+    private javax.swing.JButton jButton1;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;

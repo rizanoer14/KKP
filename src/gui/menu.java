@@ -4,9 +4,13 @@ import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.io.File;
 import java.sql.Connection;
+import java.sql.ResultSet;
+import java.sql.SQLException;
+import java.sql.Statement;
 import java.text.SimpleDateFormat;
 import java.util.Date;
 import java.util.HashMap;
+import javax.swing.JOptionPane;
 import javax.swing.Timer;
 import koneksi.konek;
 import net.sf.jasperreports.engine.JasperCompileManager;
@@ -47,10 +51,12 @@ public class menu extends javax.swing.JFrame {
         
         }              
     };
-new Timer(1000, taskPerformer).start();
+        new Timer(1000, taskPerformer).start();
 }    
     
     private Connection conn = new konek().connect();
+   
+    
     public menu() {
         initComponents();
         this.setTitle("Aplikasi Penyewaan Ruang Diklat");
@@ -675,19 +681,16 @@ new Timer(1000, taskPerformer).start();
     }//GEN-LAST:event_KartiniIActionPerformed
 
     private void dewantoroActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_dewantoroActionPerformed
-        try {
-            HashMap param = new HashMap();
-            File f = new File("C:\\Users\\Hp\\Documents\\NetBeansProjects\\KKP\\KKP\\src\\laporan\\KDewan.jrxml");
-            JasperReport j = JasperCompileManager.compileReport(f.getAbsolutePath());
-            JasperPrint jasperPrint = JasperFillManager.fillReport(j, param, conn);
-            JasperViewer jv = new JasperViewer(jasperPrint, false);
-            jv.setTitle("Laporan Keuangan Penyewaan Gedung Pertemuan");
+             try {
+            HashMap data = new HashMap();
+            String lap=("./src/laporan/KDewan.jasper");
+            JasperPrint jp = JasperFillManager.fillReport(lap, data, conn);
+            JasperViewer jv = new JasperViewer(jp, false);
+            jv.setTitle("Laporan Gedung Dewantoro");
             jv.setVisible(true);
-            dispose();
-        }
-        catch(Exception e) {
-            javax.swing.JOptionPane.showMessageDialog(rootPane, "Gagal Menampilkan Laporan"+e);
-        }
+        } catch (Exception e){
+            javax.swing.JOptionPane.showMessageDialog(rootPane, "Gagal Menampilkan Laporan!");
+        }             
     }//GEN-LAST:event_dewantoroActionPerformed
 
     private void keuangansaungActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_keuangansaungActionPerformed
@@ -766,7 +769,17 @@ new Timer(1000, taskPerformer).start();
     }//GEN-LAST:event_keuangangedungMouseClicked
 
     private void dewantoro1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_dewantoro1ActionPerformed
-        // TODO add your handling code here:
+       try {
+            HashMap data = new HashMap();
+            String lap=("./src/laporan/PDewan.jasper");
+            JasperPrint jp = JasperFillManager.fillReport(lap, data, conn);
+            JasperViewer jv = new JasperViewer(jp, false);
+            jv.setTitle("Laporan Gedung Dewantoro");
+            jv.setVisible(true);
+        } catch (Exception e){
+            javax.swing.JOptionPane.showMessageDialog(rootPane, "Gagal Menampilkan Laporan!");
+        }
+        
     }//GEN-LAST:event_dewantoro1ActionPerformed
 
     private void KartiniI1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_KartiniI1ActionPerformed

@@ -16,7 +16,7 @@ private Connection koneksi;
         }catch (ClassNotFoundException ex) {
             System.out.println("Gagal Koneksi "+ex);
         } 
-        String url = "jdbc:mysql://localhost/trw";
+        String url = "jdbc:mysql://localhost/Devtrw";
         try{
             koneksi = DriverManager.getConnection(url,"root",""); 
             System.out.println("Berhasil Koneksi Database");

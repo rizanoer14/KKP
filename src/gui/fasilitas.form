@@ -68,7 +68,7 @@
                                           <Group type="103" groupAlignment="0" attributes="0">
                                               <Component id="subtotal" alignment="0" min="-2" pref="97" max="-2" attributes="0"/>
                                               <Group type="102" alignment="0" attributes="0">
-                                                  <Component id="jumlah" min="-2" pref="35" max="-2" attributes="0"/>
+                                                  <Component id="Qty" min="-2" pref="35" max="-2" attributes="0"/>
                                                   <EmptySpace max="-2" attributes="0"/>
                                                   <Component id="nomor1" min="-2" max="-2" attributes="0"/>
                                                   <EmptySpace max="-2" attributes="0"/>
@@ -86,7 +86,7 @@
                                           <EmptySpace max="-2" attributes="0"/>
                                           <Component id="harga" min="-2" pref="46" max="-2" attributes="0"/>
                                           <EmptySpace max="32767" attributes="0"/>
-                                          <Component id="no" min="-2" max="-2" attributes="0"/>
+                                          <Component id="kdFasilitas" min="-2" max="-2" attributes="0"/>
                                           <EmptySpace min="-2" pref="63" max="-2" attributes="0"/>
                                       </Group>
                                   </Group>
@@ -140,11 +140,11 @@
                               <Component id="barang1" alignment="3" min="-2" max="-2" attributes="0"/>
                               <Component id="barang" alignment="3" min="-2" max="-2" attributes="0"/>
                               <Component id="harga" alignment="3" min="-2" max="-2" attributes="0"/>
-                              <Component id="no" alignment="3" min="-2" max="-2" attributes="0"/>
+                              <Component id="kdFasilitas" alignment="3" min="-2" max="-2" attributes="0"/>
                           </Group>
                           <EmptySpace pref="14" max="32767" attributes="0"/>
                           <Group type="103" groupAlignment="3" attributes="0">
-                              <Component id="jumlah" alignment="3" min="-2" max="-2" attributes="0"/>
+                              <Component id="Qty" alignment="3" min="-2" max="-2" attributes="0"/>
                               <Component id="jLabel2" alignment="3" min="-2" max="-2" attributes="0"/>
                               <Component id="ket" alignment="3" min="-2" max="-2" attributes="0"/>
                               <Component id="jumlah1" alignment="3" min="-2" max="-2" attributes="0"/>
@@ -441,14 +441,14 @@
             <Property name="text" type="java.lang.String" value="Jumlah"/>
           </Properties>
         </Component>
-        <Component class="javax.swing.JTextField" name="jumlah">
+        <Component class="javax.swing.JTextField" name="Qty">
           <Properties>
             <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
               <Font name="Segoe UI" size="12" style="1"/>
             </Property>
           </Properties>
           <Events>
-            <EventHandler event="keyPressed" listener="java.awt.event.KeyListener" parameters="java.awt.event.KeyEvent" handler="jumlahKeyPressed"/>
+            <EventHandler event="keyPressed" listener="java.awt.event.KeyListener" parameters="java.awt.event.KeyEvent" handler="QtyKeyPressed"/>
           </Events>
         </Component>
         <Component class="javax.swing.JLabel" name="jLabel3">
@@ -558,7 +558,7 @@
             <Property name="text" type="java.lang.String" value="ket"/>
           </Properties>
         </Component>
-        <Component class="javax.swing.JLabel" name="no">
+        <Component class="javax.swing.JLabel" name="kdFasilitas">
           <Properties>
             <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
               <Font name="Segoe UI" size="12" style="1"/>

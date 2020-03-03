@@ -115,6 +115,34 @@ public String kd_gedung, nm_gedung, hrg, wsiang, wmalam;
         }
     }
     
+    public void nomor(){
+        try{
+            String sql = "select no from pesan_fasilitas order by no desc";
+            Statement st=conn.createStatement();
+            ResultSet rs=st.executeQuery(sql);
+                if(rs.next()){
+                    String kode = rs.getString("no").substring(2);
+                    String AN = ""+(Integer.parseInt(kode)+1);
+                    String Nol = "";
+                    
+                    if(AN.length()==1){
+                        Nol="000";
+                    }else if(AN.length()==2){
+                        Nol="00";
+                    }else if(AN.length()==3){
+                        Nol="0";
+                     }else if(AN.length()==4){
+                        Nol="";
+                     }
+                    nomor.setText("NO" + Nol + AN);
+                }else{
+                    nomor.setText("NO0001");
+                }   
+        }catch(Exception e){
+            JOptionPane.showMessageDialog(null, e);
+        }
+    }
+    
     public void penyewa(){
         try{
             String sql = "select id_penyewa from pemesanan order by id_penyewa desc";
@@ -320,19 +348,20 @@ public String kd_gedung, nm_gedung, hrg, wsiang, wmalam;
                             JOptionPane.showMessageDialog(this,"Pembayaran Belum Diisi");
                             bayar.requestFocus();
                         } else{
-                            String sql="Insert into pemesanan (kode_sewa,tanggal,kode_ruang,nama_ruang,"
-                                          + "harga,waktu,id_penyewa,nama_penyewa,notelp,bayar,status) values (?,?,?,?,?,?,?,?,?,?,?)";  
+                            //String sql="Insert into pemesanan (kode_sewa,tanggal,kode_ruang,nama_ruang,"
+                            //              + "harga,waktu,id_penyewa,nama_penyewa,notelp,bayar,status) values (?,?,?,?,?,?,?,?,?,?,?)";  
+                             String sql = "INSERT INTO pemesanan VALUES (?,?,?,?,?,?,?,?,?,?)";
                              PreparedStatement p=(PreparedStatement)conn.prepareStatement(sql);
                              p.setString(1,kdsewa.getText());
                              p.setString(2,DateTime);
                              p.setString(3,kdgedung.getText());
-                             p.setString(4,nama_gedung.getText());
-                             p.setString(5,harga.getText());
-                             p.setString(6, pilih);
-                             p.setString(7,kdpenyewa.getText());
-                             p.setString(8,nm_penyewa.getText());
-                             p.setString(9,notelp.getText());
-                             p.setString(10,bayar.getText());
+                             //p.setString(4,nama_gedung.getText());
+                             p.setString(4,harga.getText());
+                             p.setString(5, pilih);
+                             p.setString(6,kdpenyewa.getText());
+                             p.setString(7,nm_penyewa.getText());
+                             p.setString(8,notelp.getText());
+                             p.setString(9,bayar.getText());
                              String terpilih;
                              //String c = harga.getText();      
                              String d = bayar.getText();
@@ -344,10 +373,10 @@ public String kd_gedung, nm_gedung, hrg, wsiang, wmalam;
                                   }else {
                                          terpilih = b;
                                   }    
-                                    p.setString(11,terpilih);
+                                    p.setString(10,terpilih);
                                     p.executeUpdate();
                                     JOptionPane.showMessageDialog(this,"Data Telah Tersimpan");
-                                    dispose();
+                                    //dispose();
                        }
                    }    
                } 
@@ -366,6 +395,7 @@ public String kd_gedung, nm_gedung, hrg, wsiang, wmalam;
         this.setLocationRelativeTo(null);
         kodesewa();
         penyewa();
+        nomor();
         //tambah_fasilitas();
        
         time.hide();
@@ -412,6 +442,7 @@ public String kd_gedung, nm_gedung, hrg, wsiang, wmalam;
         bayar = new javax.swing.JTextField();
         time = new javax.swing.JTextField();
         fasilitas = new javax.swing.JButton();
+        nomor = new javax.swing.JLabel();
 
         addWindowListener(new java.awt.event.WindowAdapter() {
             public void windowClosing(java.awt.event.WindowEvent evt) {
@@ -462,10 +493,10 @@ public String kd_gedung, nm_gedung, hrg, wsiang, wmalam;
         tgl.setDateFormatString("dd MM yyyy");
         tgl.setFont(new java.awt.Font("Segoe UI", 0, 12)); // NOI18N
         tgl.addInputMethodListener(new java.awt.event.InputMethodListener() {
+            public void caretPositionChanged(java.awt.event.InputMethodEvent evt) {
+            }
             public void inputMethodTextChanged(java.awt.event.InputMethodEvent evt) {
                 tglInputMethodTextChanged(evt);
-            }
-            public void caretPositionChanged(java.awt.event.InputMethodEvent evt) {
             }
         });
 
@@ -543,11 +574,16 @@ public String kd_gedung, nm_gedung, hrg, wsiang, wmalam;
             }
         });
 
+        nomor.setText("jLabel2");
+
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
         jPanel1Layout.setHorizontalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jLabel1, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
+                .addComponent(jLabel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(nomor))
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
                 .addGap(18, 18, 18)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -615,7 +651,11 @@ public String kd_gedung, nm_gedung, hrg, wsiang, wmalam;
         jPanel1Layout.setVerticalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel1Layout.createSequentialGroup()
-                .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 94, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 94, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addGroup(jPanel1Layout.createSequentialGroup()
+                        .addGap(15, 15, 15)
+                        .addComponent(nomor)))
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(jPanel1Layout.createSequentialGroup()
                         .addGap(2, 2, 2)
@@ -687,13 +727,14 @@ public String kd_gedung, nm_gedung, hrg, wsiang, wmalam;
 
     private void simpanActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_simpanActionPerformed
        simpan();
-       try{
-            String sql="Insert into detail_sewa (kode_sewa,harga,hargabayar,hargafas,bayar,total,gdgfas,ket) "
-                    + "values (?,?,?,?,?,?,?,?)";
+       /*try{
+            String sql="Insert into detail (kode_sewa,no,harga,hargabayar,hargafas,bayar,total,gdgfas,ket) "
+                    + "values (?,?,?,?,?,?,?,?,?)";
             PreparedStatement p=(PreparedStatement)conn.prepareStatement(sql);
             p.setString(1,kdsewa.getText());
-            p.setString(2,harga.getText());
-            p.setString(3,bayar.getText());
+            p.setString(2,nomor.getText());
+            p.setString(3,harga.getText());
+            p.setString(4,bayar.getText());
             int hargagedung = Integer.parseInt(harga.getText().trim());
             int bayargedung = Integer.parseInt(bayar.getText().trim());
             int hargafas = 0;
@@ -702,29 +743,29 @@ public String kd_gedung, nm_gedung, hrg, wsiang, wmalam;
             int z = bayarfas + bayargedung;
             String fasilitas = String.valueOf(hargafas);
             String bfasilitas = String.valueOf(bayarfas);
-            p.setString(4,fasilitas);
-            p.setString(5,bfasilitas);
+            p.setString(5,fasilitas);
+            p.setString(6,bfasilitas);
             
             int a = bayargedung + bayarfas;
             String total = String.valueOf(a);
-            p.setString(6,total);
+            p.setString(7,total);
             
             int b =hargagedung + hargafas;
             String gdgfas = String.valueOf(b);
-            p.setString(7,gdgfas);
+            p.setString(8,gdgfas);
             
             String pilih="";
             if( a < b ){
                 pilih="Tidak Lunas";
             }else pilih="Lunas";
-            p.setString(8,pilih);
+            p.setString(9,pilih);
             p.executeUpdate();
             p.close();
         }catch(SQLException e){
             System.out.println(e);
         }finally{
             JOptionPane.showMessageDialog(this,"Data Telah Tersimpan");
-        }
+        }*/
     }//GEN-LAST:event_simpanActionPerformed
 
     private void batalActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_batalActionPerformed
@@ -801,6 +842,7 @@ public String kd_gedung, nm_gedung, hrg, wsiang, wmalam;
     private javax.swing.JLabel nama5;
     private javax.swing.JTextField nama_gedung;
     private javax.swing.JTextField nm_penyewa;
+    private javax.swing.JLabel nomor;
     private javax.swing.JTextField notelp;
     private javax.swing.JRadioButton siang;
     private javax.swing.JButton simpan;

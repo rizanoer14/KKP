@@ -1,0 +1,265 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="null" language="groovy" pageWidth="600" pageHeight="400" columnWidth="200" leftMargin="20" rightMargin="20" topMargin="20" bottomMargin="20" uuid="87dede2d-68d7-4b4d-9ec2-384907a9c9b0">
+	<property name="ireport.zoom" value="1.0"/>
+	<property name="ireport.x" value="0"/>
+	<property name="ireport.y" value="0"/>
+	<style name="Title" forecolor="#FFFFFF" fontName="Arial" fontSize="26" isBold="true" pdfFontName="Helvetica-Bold"/>
+	<style name="SubTitle" forecolor="#666666" fontName="Arial" fontSize="18"/>
+	<style name="Column header" forecolor="#666666" fontName="Arial" fontSize="12" isBold="true"/>
+	<style name="Detail" fontName="Arial" fontSize="12"/>
+	<parameter name="kd" class="java.lang.String">
+		<defaultValueExpression><![CDATA[]]></defaultValueExpression>
+	</parameter>
+	<queryString>
+		<![CDATA[SELECT
+     detail_sewa.`kode_sewa` AS detail_sewa_kode_sewa,
+     detail_sewa.`no` AS detail_sewa_no,
+     detail_sewa.`harga` AS detail_sewa_harga,
+     detail_sewa.`hargabayar` AS detail_sewa_hargabayar,
+     detail_sewa.`hargafas` AS detail_sewa_hargafas,
+     detail_sewa.`bayar` AS detail_sewa_bayar,
+     detail_sewa.`total` AS detail_sewa_total,
+     detail_sewa.`gdgfas` AS detail_sewa_gdgfas,
+     detail_sewa.`ket` AS detail_sewa_ket,
+     pemesanan.`kode_sewa` AS pemesanan_kode_sewa,
+     pemesanan.`tanggal` AS pemesanan_tanggal,
+     pemesanan.`kode_ruang` AS pemesanan_kode_ruang,
+     pemesanan.`nama_ruang` AS pemesanan_nama_ruang,
+     pemesanan.`harga` AS pemesanan_harga,
+     pemesanan.`waktu` AS pemesanan_waktu,
+     pemesanan.`id_penyewa` AS pemesanan_id_penyewa,
+     pemesanan.`nama_penyewa` AS pemesanan_nama_penyewa,
+     pemesanan.`notelp` AS pemesanan_notelp,
+     pemesanan.`bayar` AS pemesanan_bayar,
+     pemesanan.`status` AS pemesanan_status,
+     pesan_fasilitas.`no` AS pesan_fasilitas_no,
+     pesan_fasilitas.`kode_sewa` AS pesan_fasilitas_kode_sewa,
+     pesan_fasilitas.`kd_fasilitas` AS pesan_fasilitas_kd_fasilitas,
+     pesan_fasilitas.`nama_barang` AS pesan_fasilitas_nama_barang,
+     pesan_fasilitas.`harga_barang` AS pesan_fasilitas_harga_barang,
+     pesan_fasilitas.`qty` AS pesan_fasilitas_qty,
+     pesan_fasilitas.`subtot` AS pesan_fasilitas_subtot
+FROM
+     `pemesanan` pemesanan INNER JOIN `detail_sewa` detail_sewa ON pemesanan.`kode_sewa` = detail_sewa.`kode_sewa`
+     INNER JOIN `pesan_fasilitas` pesan_fasilitas ON pemesanan.`kode_sewa` = pesan_fasilitas.`kode_sewa`
+     AND pesan_fasilitas.`kode_sewa` = detail_sewa.`kode_sewa`
+WHERE detail_sewa.`kode_sewa`=$P{kd}]]>
+	</queryString>
+	<field name="detail_sewa_kode_sewa" class="java.lang.String"/>
+	<field name="detail_sewa_no" class="java.lang.String"/>
+	<field name="detail_sewa_harga" class="java.lang.Integer"/>
+	<field name="detail_sewa_hargabayar" class="java.lang.Integer"/>
+	<field name="detail_sewa_hargafas" class="java.lang.Integer"/>
+	<field name="detail_sewa_bayar" class="java.lang.Integer"/>
+	<field name="detail_sewa_total" class="java.lang.Integer"/>
+	<field name="detail_sewa_gdgfas" class="java.lang.Integer"/>
+	<field name="detail_sewa_ket" class="java.lang.String"/>
+	<field name="pemesanan_kode_sewa" class="java.lang.String"/>
+	<field name="pemesanan_tanggal" class="java.sql.Date"/>
+	<field name="pemesanan_kode_ruang" class="java.lang.String"/>
+	<field name="pemesanan_nama_ruang" class="java.lang.String"/>
+	<field name="pemesanan_harga" class="java.lang.Integer"/>
+	<field name="pemesanan_waktu" class="java.lang.String"/>
+	<field name="pemesanan_id_penyewa" class="java.lang.String"/>
+	<field name="pemesanan_nama_penyewa" class="java.lang.String"/>
+	<field name="pemesanan_notelp" class="java.lang.String"/>
+	<field name="pemesanan_bayar" class="java.lang.Integer"/>
+	<field name="pemesanan_status" class="java.lang.String"/>
+	<field name="pesan_fasilitas_no" class="java.lang.String"/>
+	<field name="pesan_fasilitas_kode_sewa" class="java.lang.String"/>
+	<field name="pesan_fasilitas_kd_fasilitas" class="java.lang.String"/>
+	<field name="pesan_fasilitas_nama_barang" class="java.lang.String"/>
+	<field name="pesan_fasilitas_harga_barang" class="java.lang.Integer"/>
+	<field name="pesan_fasilitas_qty" class="java.lang.Integer"/>
+	<field name="pesan_fasilitas_subtot" class="java.lang.Integer"/>
+	<background>
+		<band splitType="Stretch"/>
+	</background>
+	<title>
+		<band height="66" splitType="Stretch"/>
+	</title>
+	<pageHeader>
+		<band splitType="Stretch"/>
+	</pageHeader>
+	<columnHeader>
+		<band height="68" splitType="Stretch">
+			<line>
+				<reportElement positionType="FixRelativeToBottom" x="0" y="35" width="555" height="1" uuid="573998b3-181d-48bd-a667-bd08e128822c"/>
+				<graphicElement>
+					<pen lineWidth="0.5" lineColor="#999999"/>
+				</graphicElement>
+			</line>
+			<staticText>
+				<reportElement style="Column header" x="0" y="4" width="71" height="15" uuid="2a817756-f860-46a1-b17c-372cd6df41d1"/>
+				<text><![CDATA[Kode Sewa]]></text>
+			</staticText>
+			<staticText>
+				<reportElement style="Column header" x="345" y="19" width="46" height="15" uuid="1c7e4533-81b8-417d-8612-5d6fda9b9a6e"/>
+				<text><![CDATA[Nama]]></text>
+			</staticText>
+			<textField>
+				<reportElement style="Detail" x="71" y="4" width="46" height="15" uuid="b93c15a7-2f4f-4eb8-a995-adbfcb4cb931"/>
+				<textFieldExpression><![CDATA[$F{detail_sewa_kode_sewa}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement style="Detail" x="402" y="19" width="46" height="15" uuid="bae9fec1-2194-48c1-9d93-82869348bd8e"/>
+				<textFieldExpression><![CDATA[$F{pemesanan_nama_penyewa}]]></textFieldExpression>
+			</textField>
+			<staticText>
+				<reportElement style="Column header" x="345" y="0" width="57" height="15" uuid="faa9b123-8f04-49e8-aafa-f6076aef1a6a"/>
+				<text><![CDATA[Tanggal]]></text>
+			</staticText>
+			<textField pattern="dd/MM/yyyy">
+				<reportElement style="Detail" x="401" y="0" width="46" height="15" uuid="b966917f-b43d-4f51-8f5f-4246de1a0490"/>
+				<textFieldExpression><![CDATA[$F{pemesanan_tanggal}]]></textFieldExpression>
+			</textField>
+			<staticText>
+				<reportElement style="Column header" x="0" y="38" width="46" height="15" uuid="f5d2de08-a629-4b45-b1a7-f211ca4e3cd1"/>
+				<text><![CDATA[Ruang]]></text>
+			</staticText>
+			<textField>
+				<reportElement style="Detail" x="0" y="53" width="128" height="15" uuid="765ee997-de12-47cd-90e5-e5eef1fbd05c"/>
+				<textFieldExpression><![CDATA[$F{pemesanan_nama_ruang}]]></textFieldExpression>
+			</textField>
+			<staticText>
+				<reportElement style="Column header" x="245" y="38" width="46" height="15" uuid="67c76d75-dfec-4981-b2dc-383e4753fcc7"/>
+				<text><![CDATA[Harga]]></text>
+			</staticText>
+			<textField pattern="#,##0.00">
+				<reportElement style="Detail" x="234" y="53" width="68" height="15" uuid="5b8566a8-b8fe-49f5-b318-169d0eed4c7d"/>
+				<textElement textAlignment="Right"/>
+				<textFieldExpression><![CDATA[$F{pemesanan_harga}]]></textFieldExpression>
+			</textField>
+			<staticText>
+				<reportElement style="Column header" x="333" y="38" width="69" height="15" uuid="dc3f1c1e-ac4b-4adb-b43c-994fc24526db"/>
+				<text><![CDATA[Banyaknya]]></text>
+			</staticText>
+			<staticText>
+				<reportElement style="Column header" x="452" y="38" width="108" height="15" uuid="dc2b3ead-6863-4b1f-b44d-552975d46f0a"/>
+				<textElement textAlignment="Center"/>
+				<text><![CDATA[Jumlah]]></text>
+			</staticText>
+			<staticText>
+				<reportElement style="Column header" x="140" y="36" width="57" height="15" uuid="40fb038f-7d32-471c-88bd-7f832d4acdca"/>
+				<text><![CDATA[Fasilitas]]></text>
+			</staticText>
+			<staticText>
+				<reportElement style="Column header" x="128" y="4" width="71" height="15" uuid="6e31518c-5030-43f8-8e77-dbb88f2c907a"/>
+				<text><![CDATA[Waktu]]></text>
+			</staticText>
+			<textField>
+				<reportElement style="Detail" x="199" y="4" width="46" height="15" uuid="e2fdf905-b92e-48e5-99d4-d8b2611c9979"/>
+				<textFieldExpression><![CDATA[$F{pemesanan_waktu}]]></textFieldExpression>
+			</textField>
+			<staticText>
+				<reportElement x="212" y="51" width="22" height="17" uuid="772c978c-c448-4cf5-b977-dd8355b3c7ff"/>
+				<textElement textAlignment="Right">
+					<font size="12"/>
+				</textElement>
+				<text><![CDATA[Rp.]]></text>
+			</staticText>
+		</band>
+	</columnHeader>
+	<detail>
+		<band height="19" splitType="Stretch">
+			<line>
+				<reportElement positionType="FixRelativeToBottom" x="0" y="0" width="555" height="1" uuid="e76f21ef-dcd5-47e4-9fcc-b90edaf2d5b1"/>
+				<graphicElement>
+					<pen lineWidth="0.5" lineColor="#999999"/>
+				</graphicElement>
+			</line>
+			<textField>
+				<reportElement style="Detail" x="140" y="1" width="46" height="15" uuid="dfd9749f-b361-4c28-b02b-c1ee85604ea8"/>
+				<textFieldExpression><![CDATA[$F{pesan_fasilitas_nama_barang}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement style="Detail" x="333" y="2" width="68" height="15" uuid="8155b73c-81f9-4285-b7f2-3c58d65359b2"/>
+				<textElement textAlignment="Center"/>
+				<textFieldExpression><![CDATA[$F{pesan_fasilitas_qty}]]></textFieldExpression>
+			</textField>
+			<textField pattern="#,##0.00">
+				<reportElement style="Detail" x="235" y="3" width="68" height="15" uuid="ed7463e3-29a7-466d-a2ee-f0265fe9eb6e"/>
+				<textElement textAlignment="Right"/>
+				<textFieldExpression><![CDATA[$F{pesan_fasilitas_harga_barang}]]></textFieldExpression>
+			</textField>
+			<staticText>
+				<reportElement x="213" y="1" width="22" height="17" uuid="920d3ead-2b61-4b70-9b56-56bf3d988637"/>
+				<textElement textAlignment="Right">
+					<font size="12"/>
+				</textElement>
+				<text><![CDATA[Rp.]]></text>
+			</staticText>
+			<textField pattern="#,##0.00">
+				<reportElement style="Detail" x="474" y="2" width="86" height="15" uuid="2bd6b864-d832-46d4-a459-a0bc5b2c17cb"/>
+				<textElement textAlignment="Right"/>
+				<textFieldExpression><![CDATA[$F{pesan_fasilitas_subtot}]]></textFieldExpression>
+			</textField>
+			<staticText>
+				<reportElement x="452" y="2" width="22" height="17" uuid="ed86a2ae-7464-4d1a-bb34-ba28e6051c12"/>
+				<textElement textAlignment="Right">
+					<font size="12"/>
+				</textElement>
+				<text><![CDATA[Rp.]]></text>
+			</staticText>
+		</band>
+	</detail>
+	<columnFooter>
+		<band height="66" splitType="Stretch">
+			<staticText>
+				<reportElement style="Column header" x="403" y="18" width="46" height="15" uuid="20598ceb-04f4-47f5-a698-a1d61823428d"/>
+				<text><![CDATA[Bayar]]></text>
+			</staticText>
+			<staticText>
+				<reportElement style="Column header" x="403" y="1" width="46" height="15" uuid="61cc3e69-41a9-4caf-b042-c3a6e5f50108"/>
+				<text><![CDATA[Total]]></text>
+			</staticText>
+			<staticText>
+				<reportElement style="Column header" x="377" y="42" width="72" height="15" uuid="b6a07d21-c2dd-4190-a888-e79fc9c08fd5"/>
+				<text><![CDATA[Keterangan]]></text>
+			</staticText>
+			<textField pattern="#,##0.00">
+				<reportElement style="Detail" x="474" y="20" width="86" height="15" uuid="a7b33fea-38d8-445f-afe9-0719924f60f1"/>
+				<textElement textAlignment="Right"/>
+				<textFieldExpression><![CDATA[$F{detail_sewa_total}]]></textFieldExpression>
+			</textField>
+			<textField pattern="#,##0.00">
+				<reportElement style="Detail" x="474" y="1" width="86" height="15" uuid="02cb52b5-a44b-401c-8922-4deccd2e258e"/>
+				<textElement textAlignment="Right"/>
+				<textFieldExpression><![CDATA[$F{detail_sewa_gdgfas}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement style="Detail" x="488" y="41" width="72" height="15" uuid="ad0bbb76-b6b2-4c45-a885-52272b5067b6"/>
+				<textElement>
+					<font isBold="true"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{detail_sewa_ket}]]></textFieldExpression>
+			</textField>
+			<line>
+				<reportElement positionType="FixRelativeToBottom" x="0" y="0" width="555" height="1" uuid="cff5f1b3-85a5-459e-a378-3aed453751ac"/>
+				<graphicElement>
+					<pen lineWidth="0.5" lineColor="#999999"/>
+				</graphicElement>
+			</line>
+			<staticText>
+				<reportElement x="452" y="2" width="22" height="17" uuid="7a77e080-51cb-4483-89db-7387b7aaf445"/>
+				<textElement textAlignment="Right">
+					<font size="12"/>
+				</textElement>
+				<text><![CDATA[Rp.]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="452" y="19" width="22" height="17" uuid="050ee0b1-1ce7-4e8a-bca6-81fa8c74faf3"/>
+				<textElement textAlignment="Right">
+					<font size="12"/>
+				</textElement>
+				<text><![CDATA[Rp.]]></text>
+			</staticText>
+		</band>
+	</columnFooter>
+	<pageFooter>
+		<band height="20" splitType="Stretch"/>
+	</pageFooter>
+	<summary>
+		<band splitType="Stretch"/>
+	</summary>
+</jasperReport>

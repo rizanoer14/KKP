@@ -75,6 +75,7 @@ public class fasilitas extends javax.swing.JFrame {
             }
         }catch (SQLException e) {
             JOptionPane.showMessageDialog(null, e);
+            e.printStackTrace();
         }
     }
     
@@ -98,7 +99,12 @@ public class fasilitas extends javax.swing.JFrame {
         tabledetail.setModel(model);
         try {
             Statement stat = conn.createStatement();
-            String sql = "SELECT * FROM  pesan_fasilitas WHERE kode_sewa='"+kdsewa.getText()+"'";
+            //String sql = "SELECT * FROM  pesan_fasilitas WHERE kode_sewa='"+kdsewa.getText()+"'";
+            String sql = "SELECT fs.nama_barang, fs.harga_barang, pf.qty,"
+                    + "pf.subtot "
+                    + "FROM fasilitas AS fs, pesan_fasilitas AS pf "
+                    + "WHERE fs.kd_fasilitas = pf.kd_fasilitas "
+                    + "AND pf.kode_sewa = '"+kdsewa.getText()+"'";
             ResultSet hasil = stat.executeQuery(sql);
             while(hasil.next()){
                 String a = hasil.getString("nama_barang");
@@ -110,6 +116,7 @@ public class fasilitas extends javax.swing.JFrame {
             }
         }catch (SQLException e) {
             JOptionPane.showMessageDialog(null, e);
+            e.printStackTrace();
         }
         int total = 0;
         for (int i =0; i< tabledetail.getRowCount(); i++){
@@ -123,7 +130,7 @@ public class fasilitas extends javax.swing.JFrame {
      public void subtotal(){     
        int a, b, c, d;
         a = Integer.parseInt(harga.getText());
-        b = Integer.parseInt(jumlah.getText());
+        b = Integer.parseInt(Qty.getText());
         //jumlah1.setText("1");
         if(jumlah1.getText().length()==0){
             jumlah1.setText("1");
@@ -158,7 +165,7 @@ public class fasilitas extends javax.swing.JFrame {
         jScrollPane1 = new javax.swing.JScrollPane();
         tablefasilitas = new javax.swing.JTable();
         jLabel2 = new javax.swing.JLabel();
-        jumlah = new javax.swing.JTextField();
+        Qty = new javax.swing.JTextField();
         jLabel3 = new javax.swing.JLabel();
         kdsewa = new javax.swing.JLabel();
         subtotal = new javax.swing.JTextField();
@@ -168,7 +175,7 @@ public class fasilitas extends javax.swing.JFrame {
         bbatal = new javax.swing.JButton();
         barang1 = new javax.swing.JLabel();
         ket = new javax.swing.JLabel();
-        no = new javax.swing.JLabel();
+        kdFasilitas = new javax.swing.JLabel();
         nomor = new javax.swing.JTextField();
         jumlah1 = new javax.swing.JTextField();
         nomor1 = new javax.swing.JTextField();
@@ -350,10 +357,10 @@ public class fasilitas extends javax.swing.JFrame {
         jLabel2.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
         jLabel2.setText("Jumlah");
 
-        jumlah.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
-        jumlah.addKeyListener(new java.awt.event.KeyAdapter() {
+        Qty.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
+        Qty.addKeyListener(new java.awt.event.KeyAdapter() {
             public void keyPressed(java.awt.event.KeyEvent evt) {
-                jumlahKeyPressed(evt);
+                QtyKeyPressed(evt);
             }
         });
 
@@ -405,8 +412,8 @@ public class fasilitas extends javax.swing.JFrame {
         ket.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
         ket.setText("ket");
 
-        no.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
-        no.setText("Kode Fasilitas");
+        kdFasilitas.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
+        kdFasilitas.setText("Kode Fasilitas");
 
         nomor.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -458,7 +465,7 @@ public class fasilitas extends javax.swing.JFrame {
                                         .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                                             .addComponent(subtotal, javax.swing.GroupLayout.PREFERRED_SIZE, 97, javax.swing.GroupLayout.PREFERRED_SIZE)
                                             .addGroup(jPanel1Layout.createSequentialGroup()
-                                                .addComponent(jumlah, javax.swing.GroupLayout.PREFERRED_SIZE, 35, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                                .addComponent(Qty, javax.swing.GroupLayout.PREFERRED_SIZE, 35, javax.swing.GroupLayout.PREFERRED_SIZE)
                                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                                                 .addComponent(nomor1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
@@ -473,7 +480,7 @@ public class fasilitas extends javax.swing.JFrame {
                                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                                         .addComponent(harga, javax.swing.GroupLayout.PREFERRED_SIZE, 46, javax.swing.GroupLayout.PREFERRED_SIZE)
                                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                        .addComponent(no)
+                                        .addComponent(kdFasilitas)
                                         .addGap(63, 63, 63))))
                             .addGroup(jPanel1Layout.createSequentialGroup()
                                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -512,10 +519,10 @@ public class fasilitas extends javax.swing.JFrame {
                             .addComponent(barang1)
                             .addComponent(barang)
                             .addComponent(harga)
-                            .addComponent(no))
+                            .addComponent(kdFasilitas))
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 14, Short.MAX_VALUE)
                         .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(jumlah, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(Qty, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addComponent(jLabel2)
                             .addComponent(ket)
                             .addComponent(jumlah1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -548,11 +555,11 @@ public class fasilitas extends javax.swing.JFrame {
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
-    private void jumlahKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_jumlahKeyPressed
+    private void QtyKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_QtyKeyPressed
          if (evt.getKeyCode() == KeyEvent.VK_ENTER) {
             subtotal();
         }
-    }//GEN-LAST:event_jumlahKeyPressed
+    }//GEN-LAST:event_QtyKeyPressed
 
     private void tablefasilitasMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_tablefasilitasMouseClicked
         int bar = tablefasilitas.getSelectedRow();
@@ -560,7 +567,7 @@ public class fasilitas extends javax.swing.JFrame {
         String b = tabmode.getValueAt(bar, 1).toString();
         String c = tabmode.getValueAt(bar, 2).toString();
         String d = tabmode.getValueAt(bar, 3).toString();
-        no.setText(a);
+        kdFasilitas.setText(a);
         barang.setText(b);
         harga.setText(c);
         ket.setText("/ "+d);
@@ -568,16 +575,19 @@ public class fasilitas extends javax.swing.JFrame {
 
     private void btambahActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btambahActionPerformed
         try{   
-            String sql="Insert into pesan_fasilitas(no,kode_sewa,kd_fasilitas,nama_barang"
-                    + ",harga_barang,qty,subtot) values (?,?,?,?,?,?,?)";  
+            //versi database Trw
+            //String sql="Insert into pesan_fasilitas(no,kode_sewa,kd_fasilitas,nama_barang"
+            //        + ",harga_barang,qty,subtot) values (?,?,?,?,?,?,?)";
+            //versi database Devtrw
+            String sql="INSERT INTO pesan_fasilitas VALUES (?,?,?,?,?)";
             PreparedStatement p=(PreparedStatement)conn.prepareStatement(sql);  
             p.setString(1,nomor.getText());
             p.setString(2,kdsewa.getText());
-            p.setString(3,no.getText());
-            p.setString(4,barang.getText());
-            p.setString(5,harga.getText());
-            p.setString(6,jumlah.getText());
-            p.setString(7,subtotal.getText());
+            p.setString(3,kdFasilitas.getText());
+            //p.setString(4,barang.getText());
+            //p.setString(5,harga.getText());
+            p.setInt(4,Integer.valueOf(Qty.getText()) );
+            p.setInt(5,Integer.valueOf(subtotal.getText()) );
             p.executeUpdate();
             p.close();
         }catch(SQLException e){ 
@@ -586,7 +596,7 @@ public class fasilitas extends javax.swing.JFrame {
             JOptionPane.showMessageDialog(this,"Data Telah Tersimpan");  
        }
         loadData();
-        jumlah.setText("");
+        Qty.setText("");
         subtotal.setText("");
         nomor();
         ambilharga();
@@ -594,7 +604,7 @@ public class fasilitas extends javax.swing.JFrame {
 
     private void bbatalActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_bbatalActionPerformed
         datatable();
-        jumlah.setText("");
+        Qty.setText("");
         subtotal.setText("");
     }//GEN-LAST:event_bbatalActionPerformed
 
@@ -612,7 +622,7 @@ public class fasilitas extends javax.swing.JFrame {
 
     private void bhapusActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_bhapusActionPerformed
         try {
-            String sql="delete from detail_sewa where kode_sewa='"+this.kdsewa.getText()+"' ";
+            String sql="delete from detail where kode_sewa='"+this.kdsewa.getText()+"' ";
             PreparedStatement p=(PreparedStatement)conn.prepareStatement(sql);
             p.executeUpdate();
             p.close();
@@ -640,37 +650,41 @@ public class fasilitas extends javax.swing.JFrame {
     
     private void bsimpanActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_bsimpanActionPerformed
         try{
-            String sql="Insert into detail_sewa (kode_sewa,no,harga,hargabayar,hargafas,bayar,total,gdgfas,ket) "
-                    + "values (?,?,?,?,?,?,?,?,?)";
+            //String sql="Insert into detail (kode_sewa,no,harga,hargabayar,hargafas,bayar,total,gdgfas,ket) "
+            //        + "values (?,?,?,?,?,?,?,?,?)";
+            //Versi DevTrw
+            String sql="INSERT INTO detail VALUES(?,?,?,?)";
             PreparedStatement p=(PreparedStatement)conn.prepareStatement(sql);
             p.setString(1,kdsewa.getText());
             p.setString(2,nomor.getText());
-            p.setString(3,hrgedung.getText());
-            p.setString(4,gedung.getText());
-            p.setString(5,tftotal.getText());
-            p.setString(6,tfbayar.getText());
+            p.setString(3,tftotal.getText());
+            //p.setString(4,gedung.getText());
+            //p.setString(3,hrgedung.getText());
+            //p.setString(6,tfbayar.getText());
             
             int a = Integer.parseInt(gedung.getText().trim());
             int b = Integer.parseInt(tfbayar.getText().trim());
             int c = a + b;
             String d = String.valueOf(c);
             total.setText(d);
-            p.setString(7,total.getText());
+            //p.setString(7,total.getText());
             
             int e = Integer.parseInt(tftotal.getText().trim());
             int f = Integer.parseInt(hrgedung.getText().trim());
             String g = String.valueOf(e+f);
-            p.setString(8,g);
+            //p.setString(8,g);
             
             String pilih="";
             if( c < ( e + f ) ){
                 pilih="Tidak Lunas";
             }else pilih="Lunas";
-            p.setString(9,pilih);
+            p.setString(4,pilih);
             p.executeUpdate();
             p.close();
         }catch(SQLException e){
-            System.out.println(e);
+            e.printStackTrace();
+            System.out.println("INSERT INTO detail VALUES(?,?,?,?)");
+            System.out.println("kode_sewa="+kdsewa.getText()+" \nnomor="+nomor.getText()+" \nhargafas="+tftotal.getText()+" \nket=LUNAS");
         }finally{
             JOptionPane.showMessageDialog(this,"Data Telah Tersimpan");
         }
@@ -712,6 +726,7 @@ public class fasilitas extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JTextField Qty;
     private javax.swing.JLabel barang;
     private javax.swing.JLabel barang1;
     private javax.swing.JButton bbatal;
@@ -730,12 +745,11 @@ public class fasilitas extends javax.swing.JFrame {
     private javax.swing.JPanel jPanel2;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JScrollPane jScrollPane2;
-    private javax.swing.JTextField jumlah;
     private javax.swing.JTextField jumlah1;
+    private javax.swing.JLabel kdFasilitas;
     private javax.swing.JLabel kdsewa;
     private javax.swing.JLabel ket;
     private javax.swing.JLabel keterangan;
-    private javax.swing.JLabel no;
     private javax.swing.JTextField nomor;
     private javax.swing.JTextField nomor1;
     private javax.swing.JTextField subtotal;
