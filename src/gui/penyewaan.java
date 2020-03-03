@@ -15,6 +15,7 @@ private Connection conn = new konek().connect();
 public String pilih = ""; 
 public String fas[] ;
 public static String kodepenyewaan, hargapenyewaan;
+public boolean cSIMPAN = false;
 
 public static String getkodepenyewaan()
 {
@@ -386,6 +387,7 @@ public String kd_gedung, nm_gedung, hrg, wsiang, wmalam;
           }
           kodesewa();  
           kosong();
+          cSIMPAN = true;
 }
 //==========================================================
     
@@ -784,7 +786,7 @@ public String kd_gedung, nm_gedung, hrg, wsiang, wmalam;
          //fasilitas();
          kodepenyewaan = kdsewa.getText();
          hargapenyewaan = harga.getText();
-         simpan();
+         if(cSIMPAN == false) simpan();
          fasilitas f = new fasilitas();  
         // f.setkd_sewa(fas[m]);
          f.setVisible(true);
