@@ -86,7 +86,7 @@ public class fasilitas extends javax.swing.JFrame {
         this.setLocationRelativeTo(null);
         harga.hide();       
         datatable();
-        nomor();
+        //nomor();
         nomor.hide();
         gedung.hide();
         loadData();
@@ -579,15 +579,15 @@ public class fasilitas extends javax.swing.JFrame {
             //String sql="Insert into pesan_fasilitas(no,kode_sewa,kd_fasilitas,nama_barang"
             //        + ",harga_barang,qty,subtot) values (?,?,?,?,?,?,?)";
             //versi database Devtrw
-            String sql="INSERT INTO pesan_fasilitas VALUES (?,?,?,?,?)";
+            String sql="INSERT INTO pesan_fasilitas VALUES (?,?,?,?)";
             PreparedStatement p=(PreparedStatement)conn.prepareStatement(sql);  
-            p.setString(1,nomor.getText());
-            p.setString(2,kdsewa.getText());
-            p.setString(3,kdFasilitas.getText());
+            //p.setString(1,nomor.getText());
+            p.setString(1,kdsewa.getText());
+            p.setString(2,kdFasilitas.getText());
             //p.setString(4,barang.getText());
             //p.setString(5,harga.getText());
-            p.setInt(4,Integer.valueOf(Qty.getText()) );
-            p.setInt(5,Integer.valueOf(subtotal.getText()) );
+            p.setInt(3,Integer.valueOf(Qty.getText()) );
+            p.setInt(4,Integer.valueOf(subtotal.getText()) );
             p.executeUpdate();
             p.close();
         }catch(SQLException e){ 
@@ -598,7 +598,7 @@ public class fasilitas extends javax.swing.JFrame {
         loadData();
         Qty.setText("");
         subtotal.setText("");
-        nomor();
+        //nomor();
         ambilharga();
     }//GEN-LAST:event_btambahActionPerformed
 

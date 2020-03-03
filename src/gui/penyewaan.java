@@ -385,7 +385,7 @@ public String kd_gedung, nm_gedung, hrg, wsiang, wmalam;
           }catch(SQLException e){ 
             System.out.println(e);  
           }
-          kodesewa();  
+          //kodesewa();  
           kosong();
           cSIMPAN = true;
 }
@@ -397,7 +397,7 @@ public String kd_gedung, nm_gedung, hrg, wsiang, wmalam;
         this.setLocationRelativeTo(null);
         kodesewa();
         penyewa();
-        nomor();
+        //nomor();
         //tambah_fasilitas();
        
         time.hide();

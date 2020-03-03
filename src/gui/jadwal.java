@@ -27,7 +27,9 @@ private DefaultTableModel tabmode;
         Object[] Baris = {"Kode Sewa","Tanggal","Nama Gedung","Waktu","Pelanggan","Harga","Bayar","Status"};
         tabmode = new DefaultTableModel(null, Baris);
         tabeljadwal.setModel(tabmode);
-        String sql = "SELECT * from pemesanan INNER JOIN detail ON pemesanan.kode_sewa = detail.kode_sewa";
+        String sql  = "SELECT p.kode_sewa, p.tanggal, r.nama_ruang, p.waktu, p.nama_penyewa, p.harga, p.bayar, p.status "
+                    + "FROM pemesanan AS p, ruang AS r "
+                    + "WHERE p.kode_ruang = r.kode_ruang";
         
         try {
             Statement stat = conn.createStatement();
@@ -38,9 +40,9 @@ private DefaultTableModel tabmode;
                 String c = hasil.getString("nama_ruang");
                 String d = hasil.getString("waktu");
                 String e = hasil.getString("nama_penyewa");
-                String h = hasil.getString("gdgfas");
-                String f = hasil.getString("total");
-                String g = hasil.getString("ket");
+                String h = hasil.getString("harga");
+                String f = hasil.getString("bayar");
+                String g = hasil.getString("status");
 
                 
                 String[] data={a,b,c,d,e,h,f,g};
