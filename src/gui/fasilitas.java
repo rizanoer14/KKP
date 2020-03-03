@@ -653,11 +653,11 @@ public class fasilitas extends javax.swing.JFrame {
             //String sql="Insert into detail (kode_sewa,no,harga,hargabayar,hargafas,bayar,total,gdgfas,ket) "
             //        + "values (?,?,?,?,?,?,?,?,?)";
             //Versi DevTrw
-            String sql="INSERT INTO detail VALUES(?,?,?,?)";
+            String sql="UPDATE pemesanan SET harga=(harga+?),status=? WHERE kode_sewa=?";
             PreparedStatement p=(PreparedStatement)conn.prepareStatement(sql);
-            p.setString(1,kdsewa.getText());
-            p.setString(2,nomor.getText());
-            p.setString(3,tftotal.getText());
+            p.setString(3,kdsewa.getText());
+            //p.setString(2,nomor.getText());
+            p.setString(1,tftotal.getText());
             //p.setString(4,gedung.getText());
             //p.setString(3,hrgedung.getText());
             //p.setString(6,tfbayar.getText());
@@ -678,12 +678,12 @@ public class fasilitas extends javax.swing.JFrame {
             if( c < ( e + f ) ){
                 pilih="Tidak Lunas";
             }else pilih="Lunas";
-            p.setString(4,pilih);
+            p.setString(2,pilih);
             p.executeUpdate();
             p.close();
         }catch(SQLException e){
             e.printStackTrace();
-            System.out.println("INSERT INTO detail VALUES(?,?,?,?)");
+            System.out.println("UPDATE pemesanan SET harga=(harga+?),status=? WHERE kode_sewa=?");
             System.out.println("kode_sewa="+kdsewa.getText()+" \nnomor="+nomor.getText()+" \nhargafas="+tftotal.getText()+" \nket=LUNAS");
         }finally{
             JOptionPane.showMessageDialog(this,"Data Telah Tersimpan");
